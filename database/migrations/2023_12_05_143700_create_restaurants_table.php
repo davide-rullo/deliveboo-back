@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('slug')->nullable();
             $table->string('phone')->nullable();
 
+            $table->unsignedBigInteger('user_id')->nullable();
+
             $table->timestamps();
         });
     }
@@ -31,5 +33,11 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('restaurants');
+
+        Schema::table('restaurants', function (Blueprint $table) {
+
+            $table->dropForeign('restaurants_user_id_foreign');
+            $table->dropColumn('user_id');
+        });
     }
 };
