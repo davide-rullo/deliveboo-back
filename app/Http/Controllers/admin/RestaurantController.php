@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Restaurant;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Restaurant;
+use Illuminate\Support\Facades\Auth;
 
 class RestaurantController extends Controller
 {
@@ -12,7 +14,14 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        //
+
+        $ristoratore = Auth::user();
+
+        /*
+        $restaurants = Restaurant::all()->where('user_id' == $restaurant);
+
+        return view('admin.restaurants.index', compact('restaurants'));
+        */
     }
 
     /**
@@ -20,7 +29,7 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.restaurants.create');
     }
 
     /**
@@ -34,7 +43,7 @@ class RestaurantController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Restaurant $restaurant)
+    public function show(string $id)
     {
         //
     }
@@ -42,7 +51,7 @@ class RestaurantController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Restaurant $restaurant)
+    public function edit(string $id)
     {
         //
     }
@@ -50,7 +59,7 @@ class RestaurantController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Restaurant $restaurant)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -58,7 +67,7 @@ class RestaurantController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Restaurant $restaurant)
+    public function destroy(string $id)
     {
         //
     }

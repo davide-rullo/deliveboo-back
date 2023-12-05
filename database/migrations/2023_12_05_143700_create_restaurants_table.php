@@ -18,10 +18,10 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('vat_number')->nullable();
             $table->string('logo')->nullable();
-            $table->string('slug')->nullable();
+            $table->string('slug');
             $table->string('phone')->nullable();
 
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('user_id');
 
             $table->timestamps();
         });
