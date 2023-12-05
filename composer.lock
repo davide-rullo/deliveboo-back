@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "12f0e4826ade5bb75ea51f4024bc42bf",
+    "content-hash": "5f7b579cae650a7d8d15cb512c9f2e7f",
     "packages": [
         {
             "name": "brick/math",
@@ -2390,6 +2390,55 @@
                 }
             ],
             "time": "2023-02-08T01:06:31+00:00"
+        },
+        {
+            "name": "pacificdev/laravel_9_preset",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fabiopacificicom/laravel-9-preset.git",
+                "reference": "984848f4e7f3855eade53759a91bc3f769a0e308"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fabiopacificicom/laravel-9-preset/zipball/984848f4e7f3855eade53759a91bc3f769a0e308",
+                "reference": "984848f4e7f3855eade53759a91bc3f769a0e308",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "PacificDev\\Laravel9Preset\\PacificDevServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PacificDev\\Laravel9Preset\\": "src/",
+                    "PacificDev\\Laravel9Preset\\Commands\\": "src/Commands/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "fbhood",
+                    "email": "mail@fabiopacifici.com"
+                }
+            ],
+            "description": "Default preset for laravel 9 with bootstrap",
+            "keywords": [
+                "laravel",
+                "preset"
+            ],
+            "support": {
+                "issues": "https://github.com/fabiopacificicom/laravel-9-preset/issues",
+                "source": "https://github.com/fabiopacificicom/laravel-9-preset/tree/1.1.1"
+            },
+            "time": "2023-03-06T15:11:18+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -6162,6 +6211,68 @@
                 "source": "https://github.com/Jean85/pretty-package-versions/tree/2.0.5"
             },
             "time": "2021-10-08T21:21:46+00:00"
+        },
+        {
+            "name": "laravel/breeze",
+            "version": "v1.26.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/breeze.git",
+                "reference": "60f339c38098bc5adbf8614bf5d89b77647a06c5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/breeze/zipball/60f339c38098bc5adbf8614bf5d89b77647a06c5",
+                "reference": "60f339c38098bc5adbf8614bf5d89b77647a06c5",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^10.17",
+                "illuminate/filesystem": "^10.17",
+                "illuminate/support": "^10.17",
+                "illuminate/validation": "^10.17",
+                "php": "^8.1.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^8.0",
+                "phpstan/phpstan": "^1.10"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Breeze\\BreezeServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Breeze\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Minimal Laravel authentication scaffolding with Blade and Tailwind.",
+            "keywords": [
+                "auth",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel/breeze/issues",
+                "source": "https://github.com/laravel/breeze"
+            },
+            "time": "2023-11-24T14:41:28+00:00"
         },
         {
             "name": "laravel/pint",
