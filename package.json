@@ -6,7 +6,11 @@
     },
     "devDependencies": {
         "autoprefixer": "^10.4.2",
+<<<<<<< HEAD
         "axios": "^1.6.2",
+=======
+        "axios": "^0.27",
+>>>>>>> 9406169a6048dd34c69fde8a38d14c57fcebb469
         "laravel-vite-plugin": "^0.6.0",
         "lodash": "^4.17.19",
         "sass": "^1.55.0",
@@ -16,4 +20,8 @@
         "@popperjs/core": "^2.11.6",
         "bootstrap": "^5.2.2"
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 9406169a6048dd34c69fde8a38d14c57fcebb469
