@@ -107,7 +107,7 @@
 
                                 <a class="nav-link text-muted {{ Route::currentRouteName() == 'admin.restaurants.index' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.restaurants.index') }}">
-                                    <i class="fa-solid fa-diagram-project fa-lg fa-fw"></i> Restaurant
+                                    <i class="fa-solid fa-utensils fa-lg fa-fw"></i> Restaurant
                                 </a>
 
                             </li>
