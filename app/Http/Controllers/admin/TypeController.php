@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Type;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Type;
 
 class TypeController extends Controller
 {
@@ -12,7 +13,6 @@ class TypeController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -36,13 +36,13 @@ class TypeController extends Controller
      */
     public function show(Type $type)
     {
-        //
+        return view('admin.types.show', compact('type'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Type $type)
+    public function edit(string $id)
     {
         //
     }
@@ -50,7 +50,7 @@ class TypeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Type $type)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -58,7 +58,7 @@ class TypeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Type $type)
+    public function destroy(string $id)
     {
         //
     }
