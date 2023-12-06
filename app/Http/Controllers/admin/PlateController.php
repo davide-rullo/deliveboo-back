@@ -20,8 +20,13 @@ class PlateController extends Controller
     {
         $restaurant = Restaurant::where('user_id', Auth::id())->first();
         $restaurantId = $restaurant->id;
-        $plates = Plate::where('restaurant_id', $restaurantId);
-        return view('admin.plates.index', compact('plates'));
+        //dd($restaurant, $restaurantId);
+        /* $plates = Plate::where('restaurant_id', '==', 7); */
+        $plates = Plate::all();
+        $filteredPlates = $plates->where('restaurant_id', $restaurantId);
+
+        //dd($filteredPlate);
+        return view('admin.plates.index', compact('filteredPlates'));
     }
 
     /**
@@ -29,23 +34,32 @@ class PlateController extends Controller
      */
     public function create()
     {
-        return view('admin.plates.create');
+        return view('admin.plates.index');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePlatesRequest $request, Plate $plate)
+    public function store(StorePlatesRequest $request, Plate $plate, Restaurant $restaurant)
     {
         $validated = $request->validated();
+        dd($request);
         $validated['slug'] = Plate::generateSlug($validated['name']);
+
         if ($request->has('cover_image')) {
             $file_path = Storage::put('covers', $request->cover_image);
             $validated['cover_image'] = $file_path;
         }
 
         $plate = Plate::create($validated);
-        return to_route('plates.index')->with('message', 'Plate created!');
+
+        $restaurant = Restaurant::where('user_id' == Auth::id())->get();
+        dd($restaurant);
+        $plate->restaurant_id = Auth::id();
+
+        $plate->save();
+
+        return to_route('admin.plates.index', compact('plate'))->with('message', 'Plate created!');
     }
 
     /**
