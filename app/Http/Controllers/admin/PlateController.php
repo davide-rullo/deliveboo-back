@@ -18,7 +18,8 @@ class PlateController extends Controller
      */
     public function index()
     {
-        $restaurantId = Restaurant::where('user_id', Auth::id())->id()->first();
+        $restaurant = Restaurant::where('user_id', Auth::id())->first();
+        $restaurantId = $restaurant->id;
         $plates = Plate::where('restaurant_id', $restaurantId);
         return view('admin.plates.index', compact('plates'));
     }

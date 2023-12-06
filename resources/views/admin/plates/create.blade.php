@@ -111,7 +111,7 @@ N/A
 
 <!-- Pulsante per inviare il modulo -->
 <button type="submit" class="btn btn-primary">
-    Create restaurant
+    Add dish to the menu
 </button>
 </form>
 

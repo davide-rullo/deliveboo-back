@@ -41,8 +41,11 @@
             <td><a class="card-link pe-3" href="{{$plate->github_link}}" target=”_blank”><i class="fa-brands fa-square-github fa-lg"></i></a>
                 <a class="card-link" href="{{$plate->online_link}}" target=”_blank”><i class="fa-solid fa-globe"></i></a>
             </td>
-
-
+            @empty
+        <tr class="">
+            <td scope="row">No dishes yet!</td>
+        </tr>
+        @endforelse
 
     </tbody>
 </table>
