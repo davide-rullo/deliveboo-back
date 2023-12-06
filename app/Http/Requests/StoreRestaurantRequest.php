@@ -13,9 +13,13 @@ class StoreRestaurantRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        $user = Auth::user();
+        //return true;
+
+        /* $user = Auth::user();
         $requestedUserId = $this->input('user_id');
-        return $user->id == $requestedUserId;
+        return $user->id === $requestedUserId; */
+
+        return Auth::id();
     }
 
 
