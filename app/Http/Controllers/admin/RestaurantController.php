@@ -105,7 +105,7 @@ class RestaurantController extends Controller
         }
 
         $restaurant->update($validated);
-        return to_route('restaurants.index')->with('message', 'Restaurant updated!');
+        return to_route('admin.restaurants.index')->with('message', 'Restaurant updated!');
     }
 
     /**

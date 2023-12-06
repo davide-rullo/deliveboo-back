@@ -12,9 +12,10 @@ class UpdateRestaurantRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        $user = Auth::user();
-        $requestedUserId = $this->input('user_id');
-        return $user->id == $requestedUserId;
+        // $user = Auth::user();
+        // $requestedUserId = $this->input('user_id');
+        // return $user->id == $requestedUserId;
+        return Auth::id();
     }
 
     /**
