@@ -14,10 +14,10 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        /*
+
         $ristoratore = Auth::user();
 
-       
+        /*
         $restaurants = Restaurant::all()->where('user_id' == $restaurant);
 
         return view('admin.restaurants.index', compact('restaurants'));
@@ -37,7 +37,7 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        return to_route('restaurants.index')->with('message', 'Restaurant created successfully! You are ready to go');
+        //
     }
 
     /**
@@ -45,7 +45,7 @@ class RestaurantController extends Controller
      */
     public function show(string $id)
     {
-        return view('admin.restaurants.show');
+        //
     }
 
     /**
