@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Plate;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Type;
 
-class PlateController extends Controller
+class TypeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -34,15 +34,15 @@ class PlateController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Plate $plate)
+    public function show(Type $type)
     {
-        //
+        return view('admin.types.show', compact('type'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Plate $plate)
+    public function edit(string $id)
     {
         //
     }
@@ -50,7 +50,7 @@ class PlateController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Plate $plate)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -58,7 +58,7 @@ class PlateController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Plate $plate)
+    public function destroy(string $id)
     {
         //
     }

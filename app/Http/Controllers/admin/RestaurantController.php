@@ -7,6 +7,7 @@ use App\Http\Requests\StoreRestaurantRequest;
 use App\Http\Requests\UpdateRestaurantRequest;
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
+use App\Models\Type;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -34,7 +35,9 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        return view('admin.restaurants.create');
+
+        $types = Type::all();
+        return view('admin.restaurants.create', compact('types'));
     }
 
     /**
@@ -42,19 +45,19 @@ class RestaurantController extends Controller
      */
     public function store(StoreRestaurantRequest $request)
     {
-        $restaurant = new Restaurant();
         $validated = $request->validated();
 
         $validated['slug'] = Restaurant::generateSlug($validated['name']);
 
         if ($request->has('logo')) {
-            $file_path = Storage::put('logos', $request->logo);
+            $file_path = Storage::put('img', $request->logo);
             $validated['logo'] = $file_path;
         }
 
-
         /* dd($validated); */
+
         $restaurant = Restaurant::create($validated);
+        $restaurant->types()->attach($request->types);
         $restaurant->user_id = Auth::id();
         $restaurant->save();
         return to_route('admin.restaurants.index', compact('restaurant'))->with('message', 'Restaurant created successfully! You are ready to go');
@@ -65,7 +68,8 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        //
+        $types = Type::all();
+        return view('admin.restaurants.show', compact('restaurant', 'types'));
     }
 
     /**
@@ -73,7 +77,8 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        return view('admin.restaurants.edit', compact('restaurant'));
+        $types = Type::all();
+        return view('admin.restaurants.edit', compact('restaurant', 'types'));
     }
 
     /**
@@ -93,8 +98,13 @@ class RestaurantController extends Controller
 
             $validated['logo'] = $file_path;
         }
+
+        if ($request->has('types')) {
+            $restaurant->types()->sync($request->types);
+        }
+
         $restaurant->update($validated);
-        return to_route('restaurants.index')->with('message', 'Restaurant updated!');
+        return to_route('admin.restaurants.index')->with('message', 'Restaurant updated!');
     }
 
     /**
