@@ -18,6 +18,7 @@ class StoreRestaurantRequest extends FormRequest
         return $user->id == $requestedUserId;
     }
 
+
     /**
      * Get the validation rules that apply to the request.
      *
