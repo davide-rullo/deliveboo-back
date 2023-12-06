@@ -10,6 +10,7 @@ use App\Models\Restaurant;
 use App\Models\Type;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Type;
 
 class RestaurantController extends Controller
 {
@@ -35,6 +36,7 @@ class RestaurantController extends Controller
      */
     public function create()
     {
+
         $types = Type::all();
         return view('admin.restaurants.create', compact('types'));
     }
