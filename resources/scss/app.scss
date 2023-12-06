@@ -1,1 +1,34 @@
-@import '~bootstrap/scss/bootstrap'
+@import '~bootstrap/scss/bootstrap';
+
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+
+/* #region Color palette */
+
+$light-pink: #ffadad;
+$orange: #ffd6a5;
+$dark-pink: #eb585b;
+$yellow: #fdffb6;
+
+* {
+    font-family: 'Bree Serif', serif;
+}
+
+/* .my_font {
+    font-family: 'Bree Serif', serif;
+} */
+
+header,
+#sidebarMenu {
+    background-color: $orange;
+
+    .my_logo_title {
+        color: $dark-pink;
+    }
+}
+
+main {
+
+    background-image: url('storage/img/sfondo-moto.png');
+    background-size: cover;
+    background-position: center;
+}
