@@ -106,7 +106,7 @@
                             <li class="nav-item">
 
                                 <a class="nav-link text-muted {{ Route::currentRouteName() == 'admin.restaurants.index' ? 'bg-secondary' : '' }}"
-                                    href="#}">
+                                    href="{{ route('admin.restaurants.index') }}">
                                     <i class="fa-solid fa-diagram-project fa-lg fa-fw"></i> Restaurant
                                 </a>
 
@@ -129,7 +129,7 @@
                     </div>
                 </nav>
 
-                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <main class="col-md-9 ms-sm-auto col-lg-10 p-0 m-0">
                     @yield('content')
                 </main>
             </div>
