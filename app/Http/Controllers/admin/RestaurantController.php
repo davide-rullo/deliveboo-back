@@ -10,6 +10,7 @@ use App\Models\Restaurant;
 use App\Models\Type;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class RestaurantController extends Controller
 {
@@ -87,16 +88,23 @@ class RestaurantController extends Controller
     public function update(UpdateRestaurantRequest $request, Restaurant $restaurant)
     {
         $validated = $request->validated();
-        $validated['slug'] = $restaurant->generateSlug($request->name);
-        if ($request->has('logo')) {
-            $updatedLogo = $request->thumb;
-            $file_path = Storage::put('logos', $updatedLogo);
+        /* $validated['slug'] = $restaurant->generateSlug($request->name); */
+        //dd($request);
 
-            if (!is_null($restaurant->logo) && Storage::fileExists($restaurant->logo)) {
+        if ($request->has('logo')) {
+            $updatedLogo = $request->logo;
+            $file_path = Storage::put('img', $updatedLogo);
+
+
+            if (!is_null($restaurant->logo) || Storage::fileExists($restaurant->logo)) {
                 Storage::delete($restaurant->logo);
             }
 
             $validated['logo'] = $file_path;
+        }
+
+        if (!Str::is($restaurant->getOriginal('name'), $request->name)) {
+            $validated['slug'] = $restaurant->generateSlug($request->name);
         }
 
         if ($request->has('types')) {
@@ -112,6 +120,9 @@ class RestaurantController extends Controller
      */
     public function destroy(Restaurant $restaurant)
     {
+
+        $restaurant->types()->detach();
+
         if (!is_null($restaurant->logo) && Storage::fileExists($restaurant->logo)) {
             Storage::delete($restaurant->logo);
         };

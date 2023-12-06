@@ -77,11 +77,7 @@ class TypeSeeder extends Seeder
                 'slug' => 'sushi',
 
             ],
-            [
-                'name' => 'Mexican',
-                'cover_image' => 'mexican.png',
-                'slug' => 'mexican',
-            ],
+
 
         ];
 
