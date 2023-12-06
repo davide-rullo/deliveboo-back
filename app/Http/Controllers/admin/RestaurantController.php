@@ -42,17 +42,22 @@ class RestaurantController extends Controller
      */
     public function store(StoreRestaurantRequest $request)
     {
+        $restaurant = new Restaurant();
         $validated = $request->validated();
-        $validated['slug'] = Restaurant::generateSlug($request->name);
+
+        $validated['slug'] = Restaurant::generateSlug($validated['name']);
 
         if ($request->has('logo')) {
             $file_path = Storage::put('logos', $request->logo);
             $validated['logo'] = $file_path;
         }
 
-        $newRestaurant = Restaurant::create($validated);
-        $newRestaurant->save();
-        return to_route('restaurants.index')->with('message', 'Restaurant created successfully! You are ready to go');
+
+        /* dd($validated); */
+        $restaurant = Restaurant::create($validated);
+        $restaurant->user_id = Auth::id();
+        $restaurant->save();
+        return to_route('admin.restaurants.index', compact('restaurant'))->with('message', 'Restaurant created successfully! You are ready to go');
     }
 
     /**
@@ -97,7 +102,10 @@ class RestaurantController extends Controller
      */
     public function destroy(Restaurant $restaurant)
     {
+        if (!is_null($restaurant->logo) && Storage::fileExists($restaurant->logo)) {
+            Storage::delete($restaurant->logo);
+        };
         $restaurant->delete();
-        return to_route('restaurants.index')->with('message', 'Your restaurant was deleted successfully');
+        return to_route('admin.restaurants.index')->with('message', 'Your restaurant was deleted successfully');
     }
 }
