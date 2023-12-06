@@ -20,8 +20,8 @@
             <!-- Campo: Nome del ristorante -->
             <div class="mb-3">
                 <label for="name" class="form-label text-warning">Name restaurant</label>
-                <input type="text" class="form-control" name="name" id="name" aria-describedby="helpId"
-                    placeholder="Acolyte Eco Battle staff" value="{{ old('name') }}">
+                <input type="text" class="form-control" @error('name') is-invalid @enderror name="name" id="name"
+                    aria-describedby="helpId" placeholder="Acolyte Eco Battle staff" value="{{ old('name') }}">
                 <small id="nameHelper" class="form-text text-white">
                     Type your name here
 
@@ -34,8 +34,9 @@
             <!-- Campo: Indirizzo -->
             <div class="mb-3">
                 <label for="address" class="form-label text-warning">Address</label>
-                <input type="text" class="form-control" name="address" id="address" aria-describedby="addressHelper"
-                    placeholder="Piazza Duomo 1, Milano" value="{{ old('address') }}">
+                <input type="text" class="form-control" @error('address') is-invalid @enderror name="address"
+                    id="address" aria-describedby="addressHelper" placeholder="Piazza Duomo 1, Milano"
+                    value="{{ old('address') }}">
                 <small id="addressHelper" class="form-text text-white">
                     Type the address here
 
@@ -48,8 +49,9 @@
             <!-- Campo: Numero di partita IVA -->
             <div class="mb-3">
                 <label for="vat_number" class="form-label text-warning">Vat number</label>
-                <input type="text" class="form-control" name="vat_number" id="vat_number" aria-describedby="vat_numberHelper"
-                    placeholder="0123456789" value="{{ old('vat_number') }}">
+                <input type="text" class="form-control" @error('vat_number') is-invalid @enderror name="vat_number"
+                    id="vat_number" aria-describedby="vat_numberHelper" placeholder="0123456789"
+                    value="{{ old('vat_number') }}">
                 <small id="vat_numberHelper" class="form-text text-white">
                     Type the vat number here
 
@@ -61,14 +63,14 @@
 
             <!-- Campo: Carica il logo -->
             <div class="mb-3">
-                <label for="image" class="form-label text-warning">Upload your logo</label>
-                <input type="file" class="form-control" name="image" id="image" placeholder=""
+                <label for="logo" class="form-label text-warning">Upload your logo</label>
+                <input type="file" class="form-control" name="logo" id="logo" placeholder=""
                     aria-describedby="image_helper">
                 <div id="image_helper" class="form-text text-white">
                     Upload your business logo
                 </div>
             </div>
-            @error('image')
+            @error('logo')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
 
