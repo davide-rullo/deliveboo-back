@@ -5,46 +5,61 @@
         <div class="container">
             <h1 class="pt-5 pb-3 text-center">Your Disches</h1>
 
-            <a href="{{ route('admin.plates.create') }}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add a new
-                dish</a>
+            <div class="d-flex justify-content-end">
+                <a href="{{ route('admin.plates.create') }}" class="btn btn-outline-dark my-4"><i class="fa-solid fa-plus"></i>
+                    Add
+                    a
+                    new
+                    dish</a>
+            </div>
+
+
 
             <table class="table table-primary">
                 <thead>
-                    <tr>
-                        <th scope="col">name</th>
+                    <tr class="text-center">
+                        <th scope="col">Name</th>
                         <th scope="col">Description</th>
                         <th scope="col">Ingredients</th>
                         <th scope="col">Image</th>
                         <th scope="col">Price</th>
-                        <th scope="col">Is available</th>
+                        <th scope="col">Available</th>
 
 
                     </tr>
                 </thead>
                 <tbody>
 
-                    @forelse ($plates as $plate)
-                        <tr class="">
-                            <td scope="row">{{ $plate->name }}</td>
+                    @forelse ($filteredPlates as $plate)
+                        <tr class="text-center">
+                            <td>{{ $plate->name }}</td>
                             <td>{{ $plate->description }}</td>
                             <td>{{ $plate->ingredients }}</td>
                             <td>
+
+
+
+
+
+
+
                                 @if ($plate->cover_image)
-                                    <img width="100" src="{{ asset('storage/' . $plate->cover_image) }}">
+                                    {{-- <img width="100" src="{{ asset('storage/' . $plate->cover_image) }}"> --}}
+                                    <img width="100" src="{{ asset('storage/covers/panino.jpg') }}">
                                 @else
                                     N/A
                                 @endif
                             </td>
-                            <td>{{ $plate->Price }}</td>
-                            <td>{{ $plate->is_available }}</td>
+                            <td>{{ $plate->price }} €</td>
+
+                            @if ($plate->is_available == 1)
+                                <td>✅</td>
+                            @else
+                                <td>❌</td>
+                            @endif
 
 
-                            <td>{{ $plate->title }}</td>
-                            <td><a class="card-link pe-3" href="{{ $plate->github_link }}" target=”_blank”><i
-                                        class="fa-brands fa-square-github fa-lg"></i></a>
-                                <a class="card-link" href="{{ $plate->online_link }}" target=”_blank”><i
-                                        class="fa-solid fa-globe"></i></a>
-                            </td>
+
                         @empty
                         <tr class="">
                             <td scope="row">No dishes yet!</td>

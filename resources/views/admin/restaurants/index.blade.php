@@ -16,7 +16,7 @@
             </div>
             <div class="row justify-content-end py-5">
 
-                <div class="col-5">
+                <div class="col-8 col-md-5">
 
 
                     @if ($restaurant)
@@ -38,7 +38,7 @@
                                         class="btn btn-outline-dark"><i class="fa-solid fa-file-pen"></i></a>
 
                                     <!-- Modal trigger button -->
-                                    <a type="button" class="btn btn-outline-danger mx-4" data-bs-toggle="modal"
+                                    <a type="button" class="btn btn-outline-danger mx-sm-4" data-bs-toggle="modal"
                                         data-bs-target="#modalId"><i class="fa-solid fa-trash-can"></i></a>
 
                                     <!-- Modal Body -->

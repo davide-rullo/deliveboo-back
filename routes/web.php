@@ -28,7 +28,7 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name("admin.")->group(
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('restaurants', RestaurantController::class)->parameters(['restaurants' => 'restaurant:slug']);
-    Route::resource('plates', PlateController::class)->parameters(['plates' => 'plates:slug']);
+    Route::resource('plates', PlateController::class)->parameters(['plates' => 'plate:slug']);
 });
 
 

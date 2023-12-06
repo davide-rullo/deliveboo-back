@@ -22,7 +22,7 @@
                 @method('PUT')
 
                 <div class="mb-3">
-                    <label for="name" class="form-label text-warning">Name restaurant</label>
+                    <label for="name" class="form-label text-muted">Name restaurant</label>
                     <input type="text" class="form-control" @error('name') is-invalid @enderror name="name"
                         id="name" aria-describedby="helpId" placeholder="Acolyte Eco Battle staff"
                         value="{{ old('name', $restaurant->name) }}">
@@ -37,7 +37,7 @@
 
 
                 <div class="mb-3">
-                    <label for="address" class="form-label text-warning">Address</label>
+                    <label for="address" class="form-label text-muted">Address</label>
                     <input type="text" class="form-control" @error('address') is-invalid @enderror name="address"
                         id="address" aria-describedby="addressHelper" placeholder="Piazza Duomo 1, Milano"
                         value="{{ old('address', $restaurant->address) }}">
@@ -77,7 +77,7 @@
 
 
                 <div class="mb-3">
-                    <label for="vat_number" class="form-label text-warning">Vat number</label>
+                    <label for="vat_number" class="form-label text-muted">Vat number</label>
                     <input type="text" class="form-control" @error('vat_number') is-invalid @enderror name="vat_number"
                         id="vat_number" aria-describedby="vat_numberHelper" placeholder="0123456789"
                         value="{{ old('vat_number', $restaurant->vat_number) }}">
@@ -92,7 +92,7 @@
 
 
                 <div class="mb-3">
-                    <label for="logo" class="form-label text-warning">Upload your logo</label>
+                    <label for="logo" class="form-label text-muted">Upload your logo</label>
                     <input type="file" class="form-control" name="logo" id="logo" placeholder=""
                         aria-describedby="image_helper">
                     <div id="image_helper" class="form-text text-white">
@@ -106,7 +106,7 @@
 
 
                 <div class="mb-3">
-                    <label for="phone" class="form-label text-warning">Phone</label>
+                    <label for="phone" class="form-label text-muted">Phone</label>
                     <input type="text" class="form-control" @error('phone') is-invalid @enderror name="phone"
                         id="phone" aria-describedby="phoneHelper" placeholder="0123456789"
                         value="{{ old('phone', $restaurant->phone) }}">
