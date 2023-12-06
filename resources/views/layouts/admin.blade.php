@@ -35,13 +35,13 @@
                 </a>
             </div>
 
-            {{-- <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center">
                 <button class="navbar-toggler position-absolute d-md-none collapsed" type="button"
                     data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
                     aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <span><img height="40" src="{{ asset('storage/img/logo.png') }}" alt=""></span>
                 </button>
-            </div> --}}
+            </div>
 
 
 
@@ -82,7 +82,7 @@
                         <ul class="nav flex-column">
 
                             <li class="">
-                                <a class="d-md-none nav-link {{ Route::currentRouteName() == '/' ? 'bg-secondary' : '' }}"
+                                <a class="d-md-none nav-link text-muted {{ Route::currentRouteName() == '/' ? 'bg-secondary' : '' }}"
                                     href="{{ url('/') }}">
                                     <i class="fa-solid fa-house fa-lg fa-fw"></i> Home
                                 </a>

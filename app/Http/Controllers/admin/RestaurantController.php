@@ -51,24 +51,23 @@ class RestaurantController extends Controller
         $validated['slug'] = Restaurant::generateSlug($validated['name']);
 
         if ($request->has('logo')) {
-            $file_path = Storage::put('logos', $request->logo);
+            $file_path = Storage::put('img', $request->logo);
             $validated['logo'] = $file_path;
         }
 
 
-       
-        
-       
-        
 
 
-        /* dd($validated); */
+
+
+
+
+        //dd($validated);
         $restaurant = Restaurant::create($validated);
         $restaurant->types()->attach($request->types);
         $restaurant->user_id = Auth::id();
         $restaurant->save();
         return to_route('admin.restaurants.index', compact('restaurant'))->with('message', 'Restaurant created successfully! You are ready to go');
-
     }
 
     /**
