@@ -26,9 +26,12 @@ header,
     }
 }
 
-main {
+.back_image {
 
-    background-image: url('storage/img/sfondo-moto.png');
-    background-size: cover;
-    background-position: center;
+    background-color: $light-pink;
+
+    background-image: url('../storage/img/sfondo-pollo.png');
+    background-size: contain;
+    background-position: left;
+    background-repeat: no-repeat;
 }
