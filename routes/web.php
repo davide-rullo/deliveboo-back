@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\RestaurantController;
+use App\Http\Controllers\Admin\PlateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,7 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name("admin.")->group(
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('restaurants', RestaurantController::class)->parameters(['restaurants' => 'restaurant:slug']);
+    Route::resource('plates', PlateController::class)->parameters(['plates' => 'plates:slug']);
 });
 
 
