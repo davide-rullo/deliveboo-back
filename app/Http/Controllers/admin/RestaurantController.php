@@ -55,14 +55,8 @@ class RestaurantController extends Controller
             $validated['logo'] = $file_path;
         }
 
+        /* dd($validated); */
 
-
-
-
-
-
-
-        //dd($validated);
         $restaurant = Restaurant::create($validated);
         $restaurant->types()->attach($request->types);
         $restaurant->user_id = Auth::id();
