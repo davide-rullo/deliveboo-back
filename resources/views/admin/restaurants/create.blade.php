@@ -3,33 +3,66 @@
 @section('page-title', 'Create restaurant')
 
 @section('content')
-    <div class="container py-5">
-        <!-- Header della pagina -->
-        <div class="row mb-3">
-            <div class="col d-flex align-items-center mt-4">
-                <h1 class="flex-grow-1 m-0">
-                    {{ __('Add your restaurant') }}
+<div class="container py-5">
+    <!-- Header della pagina -->
+    <div class="row mb-3">
+        <div class="col d-flex align-items-center mt-4">
+            <h1 class="flex-grow-1 m-0">
+                {{ __('Add your restaurant') }}
                 </h1>
             </div>
         </div>
-
+        
         <!-- Form per la creazione del ristorante -->
         <form action="{{ route('admin.restaurants.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
-
+            
             <!-- Campo: Nome del ristorante -->
             <div class="mb-3">
                 <label for="name" class="form-label text-warning">Name restaurant</label>
+
                 <input type="text" class="form-control" @error('name') is-invalid @enderror name="name" id="name"
-                    aria-describedby="helpId" placeholder="Acolyte Eco Battle staff" value="{{ old('name') }}">
+                    aria-describedby="helpId" placeholder="Write the name of your restaurant" value="{{ old('name') }}">
+
+                
+
                 <small id="nameHelper" class="form-text text-white">
                     Type your name here
-
+                    
                     @error('name')
-                        <div class="text-danger">{{ $message }}</div>
+                    <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </small>
             </div>
+            
+            {{-- Campo: Tipo di ristorante --}}
+            <div class="dropdown my-3">
+                <button class="btn btn-dark dropdown-toggle" type="button" id="multiSelectDropdownTech"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Type of restaurant
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="multiSelectDropdownTech">
+                    @forelse ($types as $type)
+                        <li>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="types[]"
+                                    value="{{ $type->id }}" id="type{{ $type->id }}"
+                                    {{ in_array($type->id, old('types', [])) ? 'checked' : '' }}>
+                                <label class="form-check-label" for="type{{ $type->id }}">
+                                    {{ $type->name }}
+                                </label>
+                            </div>
+                        </li>
+                    @empty
+                        N/A
+                    @endforelse
+                </ul>
+            </div>
+            
+            <!-- Gestione degli errori per il campo 'types' -->
+            @error('types')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
 
             <!-- Campo: Indirizzo -->
             <div class="mb-3">
@@ -65,8 +98,12 @@
             <div class="mb-3">
                 <label for="logo" class="form-label text-warning">Upload your logo</label>
                 <input type="file" class="form-control" name="logo" id="logo" placeholder=""
-                    aria-describedby="image_helper">
-                <div id="image_helper" class="form-text text-white">
+
+                  
+
+                    aria-describedby="logo_helper">
+                <div id="logo_helper" class="form-text text-white">
+
                     Upload your business logo
                 </div>
             </div>
@@ -88,34 +125,6 @@
                 </small>
             </div>
 
-            {{-- Campo: Tipo di ristorante --}}
-            {{-- <div class="dropdown my-3">
-                <button class="btn btn-dark dropdown-toggle" type="button" id="multiSelectDropdownTech"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    Type of restaurant
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="multiSelectDropdownTech">
-                    @forelse ($types as $type)
-                        <li>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="types[]"
-                                    value="{{ $type->id }}" id="type{{ $type->id }}"
-                                    {{ in_array($type->id, old('types', [])) ? 'checked' : '' }}>
-                                <label class="form-check-label" for="type{{ $type->id }}">
-                                    {{ $type->name }}
-                                </label>
-                            </div>
-                        </li>
-                    @empty
-                        N/A
-                    @endforelse
-                </ul>
-            </div> --}}
-
-            <!-- Gestione degli errori per il campo 'types' -->
-            @error('types')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
 
             <!-- Pulsante per inviare il modulo -->
             <button type="submit" class="btn btn-primary">
