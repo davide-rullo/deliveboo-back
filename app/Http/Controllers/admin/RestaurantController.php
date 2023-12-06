@@ -54,10 +54,10 @@ class RestaurantController extends Controller
         }
 
 
-       
-        
-       
-        
+
+
+
+
 
 
         /* dd($validated); */
@@ -66,7 +66,6 @@ class RestaurantController extends Controller
         $restaurant->user_id = Auth::id();
         $restaurant->save();
         return to_route('admin.restaurants.index', compact('restaurant'))->with('message', 'Restaurant created successfully! You are ready to go');
-
     }
 
     /**
@@ -110,7 +109,7 @@ class RestaurantController extends Controller
         }
 
         $restaurant->update($validated);
-        return to_route('restaurants.index')->with('message', 'Restaurant updated!');
+        return to_route('admin.restaurants.index')->with('message', 'Restaurant updated!');
     }
 
     /**
