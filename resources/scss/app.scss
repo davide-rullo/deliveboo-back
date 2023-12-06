@@ -9,6 +9,24 @@ $orange: #ffd6a5;
 $dark-pink: #eb585b;
 $yellow: #fdffb6;
 
+.bg_my_light-pink {
+    background-color: $light-pink;
+}
+
+.bg_my_orange {
+    background-color: $orange;
+}
+
+.bg_my_dark-pink {
+    background-color: $dark-pink;
+}
+
+.bg_my_yellow {
+    background-color: $yellow;
+}
+
+/* Font */
+
 * {
     font-family: 'Bree Serif', serif;
 }
@@ -34,4 +52,13 @@ header,
     background-size: contain;
     background-position: left;
     background-repeat: no-repeat;
+}
+
+.card {
+    background-color: $orange;
+}
+
+.my_badge {
+    background-color: $dark-pink;
+    color: black;
 }

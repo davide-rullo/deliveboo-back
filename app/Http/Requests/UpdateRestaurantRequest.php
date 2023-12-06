@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class UpdateRestaurantRequest extends FormRequest
 {
@@ -27,7 +28,7 @@ class UpdateRestaurantRequest extends FormRequest
     {
         return [
 
-            'name' => ['required', 'bail', 'min:3', 'max:50', 'unique:restaurants'],
+            'name' => ['required', 'bail', 'min:3', 'max:50', Rule::unique('restaurants')->ignore($this->restaurant)],
             'address' => ['nullable'],
             'user_id' => ['nullable', 'exists:users,id'],
             'vat_number' => ['nullable', 'min:9', 'max:20'],
