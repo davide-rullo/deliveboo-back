@@ -20,9 +20,9 @@
 
 
                     @if ($restaurant)
-                        <div class="card">
+                        <div class="card shadow">
                             <div class="card-img-top">
-                                <img class="img-fluid" src="{{ asset('storage/img/delivery.jpeg') }}" alt="">
+                                <img class="img-fluid" src="{{ asset('storage/' . $restaurant->logo) }}" alt="">
                             </div>
                             <div class="card-body">
                                 <div class="card-title">

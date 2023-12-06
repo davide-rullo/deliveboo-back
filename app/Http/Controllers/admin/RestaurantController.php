@@ -10,6 +10,7 @@ use App\Models\Restaurant;
 use App\Models\Type;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Type;
 
 class RestaurantController extends Controller
 {
@@ -35,6 +36,7 @@ class RestaurantController extends Controller
      */
     public function create()
     {
+
         $types = Type::all();
         return view('admin.restaurants.create', compact('types'));
     }
@@ -49,10 +51,12 @@ class RestaurantController extends Controller
         $validated['slug'] = Restaurant::generateSlug($validated['name']);
 
         if ($request->has('logo')) {
-            $file_path = Storage::put('logos', $request->logo);
+            $file_path = Storage::put('img', $request->logo);
             $validated['logo'] = $file_path;
         }
+
         /* dd($validated); */
+
         $restaurant = Restaurant::create($validated);
         $restaurant->types()->attach($request->types);
         $restaurant->user_id = Auth::id();
