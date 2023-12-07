@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->string('ingredients')->nullable();
             $table->string('cover_image')->nullable();
-            $table->float('price', 4, 2)->nullable();
+            $table->decimal('price', 4, 2)->nullable();
             $table->boolean('is_available')->default(true);
             $table->unsignedBigInteger('restaurant_id')->nullable();
 

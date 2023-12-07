@@ -77,8 +77,9 @@
                 <!-- Campo: Prezzo -->
                 <div class="mb-3">
                     <label for="price" class="form-label text-muted">Price</label>
-                    <input type="text" class="form-control" @error('price') is-invalid @enderror name="price"
-                        id="price" aria-describedby="priceHelper" placeholder="0123456789" value="{{ old('price') }}">
+                    <input type="number" step=".01" class="form-control" @error('price') is-invalid @enderror
+                        name="price" id="price" aria-describedby="priceHelper" placeholder="0123456789"
+                        value="{{ old('price') }}">
                     <small id="priceHelper" class="form-text text-muted">
                         Type the dish price here
 
