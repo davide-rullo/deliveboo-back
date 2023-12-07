@@ -37,7 +37,7 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name("admin.")->group(
     Route::delete('/forceDelete/{id}', [RestaurantController::class, 'forceDelete'])->name('forceDelete');
 
 
-    Route::resource('plates', PlateController::class)->parameters(['plates' => 'plate:slug']);
+    Route::resource('plates', PlateController::class)/* ->parameters(['plate' => 'plate:slug']) */;
 
     Route::get('/restaurants/{restaurant}/plates/create', [PlateController::class, 'create'])->name('restaurants.plates.create');
 });

@@ -26,7 +26,7 @@
                     <input type="text" class="form-control" @error('name') is-invalid @enderror name="name"
                         id="name" aria-describedby="helpId" placeholder="Write the name of your plate"
                         value="{{ old('name', $plate->name) }}" required>
-                    <small id="nameHelper" class="form-text text-white">
+                    <small id="nameHelper" class="form-text text-muted">
                         Type dish name here
 
                         @error('name')
