@@ -37,7 +37,7 @@ class StoreRestaurantRequest extends FormRequest
             'name' => ['required', 'bail', 'min:3', 'max:50', 'unique:restaurants'],
             'address' => ['nullable'],
             'user_id' => ['nullable', 'exists:users,id'],
-            'vat_number' => ['nullable', 'min:9', 'max:20'],
+            'vat_number' => ['nullable', 'min:11', 'max:16'],
             'logo' => ['nullable', 'image', 'max:500', 'mimes:png,jpg,webp'],
             'phone' => ['nullable']
         ];

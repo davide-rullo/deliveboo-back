@@ -33,9 +33,8 @@
                 <!-- Campo: Descrizione -->
                 <div class="mb-3">
                     <label for="description" class="form-label text-muted">Description</label>
-                    <input type="text" class="form-control" @error('description') is-invalid @enderror name="description"
-                        id="description" aria-describedby="descriptionHelper" placeholder="Describe your dish"
-                        value="{{ old('description') }}">
+                    <textarea class="form-control" @error('description') is-invalid @enderror name="description" id="description"
+                        aria-describedby="descriptionHelper" placeholder="Describe your dish" value="{{ old('description') }}"></textarea>
                     <small id="descriptionHelper" class="form-text text-muted">
                         Type the description here
 
@@ -44,6 +43,9 @@
                         @enderror
                     </small>
                 </div>
+
+
+
 
                 <!-- Campo: Ingredienti -->
                 <div class="mb-3">
