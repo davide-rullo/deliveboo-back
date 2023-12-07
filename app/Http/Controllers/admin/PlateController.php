@@ -115,4 +115,47 @@ class PlateController extends Controller
         $plate->delete();
         return to_route('plates.index')->with('message', 'Your plate was deleted successfully');
     }
+
+    public function recycle()
+    {
+        $page_title = 'Plates Recycle Bin';
+        $restaurant = Restaurant::where('user_id', Auth::id())->first();
+        $restaurantId = $restaurant->id;
+        $trashed_plates = Plate::onlyTrashed()->where('restaurant_id', $restaurantId)->paginate(5);
+        return view('admin.plates.recycle', compact('trashed_plates', 'page_title'));
+    }
+
+    public function restore($id)
+    {
+        $restaurant = Restaurant::where('user_id', Auth::id())->first();
+        $restaurantId = $restaurant->id;
+        $plate = Plate::onlyTrashed()->where('restaurant_id', $restaurantId)->find($id);
+        $plate->restore();
+
+        return to_route('admin.plates.recycle')->with('message', 'Your plate was restored successfully');
+    }
+
+    public function forceDelete($id)
+    {
+        $restaurant = Restaurant::where('user_id', Auth::id())->first();
+        $restaurantId = $restaurant->id;
+        $plate = Plate::onlyTrashed()->where('restaurant_id', $restaurantId)->find($id);
+
+        if (!is_null($plate->cover_image)) {
+            Storage::delete($plate->logo);
+        }
+
+        $plate->forceDelete();
+
+        return to_route('admin.plates.recycle')->with('message', 'Your plate was deleted permanently');
+    }
+
+    public function showTrashed($id)
+    {
+        $page_title = 'Deleted Plate Details';
+        $restaurant = Restaurant::where('user_id', Auth::id())->first();
+        $restaurantId = $restaurant->id;
+        $plate = Plate::onlyTrashed()->where('restaurant_id', $restaurantId)->find($id);
+        return view('admin.plates.showTrashed', compact('plate', 'page_title'));
+    }
 }

@@ -15,6 +15,7 @@ use App\Models\Plate;
 
 class RestaurantController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
@@ -130,10 +131,49 @@ class RestaurantController extends Controller
 
         $plates = Plate::where('restaurant_id', $restaurant->id)->get();
         foreach ($plates as $plate) {
-            $plate->delete();
+            $plate->forceDelete();
         }
 
         $restaurant->delete();
         return to_route('admin.restaurants.index')->with('message', 'Your restaurant was deleted successfully');
+    }
+
+    public function recycle()
+    {
+        $userId = Auth::id();
+        $page_title = 'Restaurant Recycle Bin';
+        $trashed_restaurants = Restaurant::onlyTrashed()->where('user_id', $userId)->orderByDesc('deleted_at')->paginate(5);
+        return view('admin.restaurants.recycle', compact('trashed_restaurants', 'page_title'));
+    }
+
+    public function restore($id)
+    {
+
+
+        $restaurant =  Restaurant::onlyTrashed()->where('user_id', Auth::id())->find($id);
+        $restaurant->restore();
+        return to_route('admin.restaurants.recycle')->with('message', 'Your restaurant was restored successfully');
+    }
+
+    public function forceDelete($id)
+    {
+
+        $restaurant =  Restaurant::onlyTrashed()->where('user_id', Auth::id())->find($id);
+        if (!is_null($restaurant->logo)) {
+            Storage::delete($restaurant->logo);
+        }
+
+        $restaurant->types()->detach();
+
+        $restaurant->forceDelete();
+
+        return to_route('admin.restaurants.recycle')->with('message', 'Your Restaurant was deleted permanently');
+    }
+
+    public function showTrashed($id)
+    {
+        $page_title = 'Deleted Restaurant Details';
+        $restaurant = Restaurant::onlyTrashed()->find($id);
+        return view('admin.restaurants.showTrashed', compact('restaurant', 'page_title'));
     }
 }
