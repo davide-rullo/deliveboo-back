@@ -63,7 +63,7 @@ class RestaurantController extends Controller
         $restaurant->types()->attach($request->types);
         $restaurant->user_id = Auth::id();
         $restaurant->save();
-        return to_route('admin.restaurants.index', compact('restaurant'))->with('message', 'Restaurant created successfully! You are ready to go');
+        return to_route('admin.restaurants.index', compact('restaurant'))->with('message', '✅ Restaurant created successfully! You are ready to go');
     }
 
     /**
@@ -114,7 +114,7 @@ class RestaurantController extends Controller
         }
 
         $restaurant->update($validated);
-        return to_route('admin.restaurants.index')->with('message', 'Restaurant updated!');
+        return to_route('admin.restaurants.index')->with('message', '✅ Restaurant updated!');
     }
 
     /**
@@ -135,7 +135,7 @@ class RestaurantController extends Controller
         }
 
         $restaurant->delete();
-        return to_route('admin.restaurants.index')->with('message', 'Your restaurant was deleted successfully');
+        return to_route('admin.restaurants.index')->with('message', '✅ Restaurant deleted successfully');
     }
 
     public function recycle()
@@ -152,7 +152,7 @@ class RestaurantController extends Controller
 
         $restaurant =  Restaurant::onlyTrashed()->where('user_id', Auth::id())->find($id);
         $restaurant->restore();
-        return to_route('admin.restaurants.index')->with('message', 'Your restaurant was restored successfully');
+        return to_route('admin.restaurants.index')->with('message', '✅ Restaurant restored successfully');
     }
 
     public function forceDelete($id)
@@ -168,7 +168,7 @@ class RestaurantController extends Controller
 
         $restaurant->forceDelete();
 
-        return to_route('admin.recycle')->with('message', 'Your Restaurant was deleted permanently');
+        return to_route('admin.recycle')->with('message', '✅ Restaurant deleted permanently');
     }
 
     public function showTrashed($id)

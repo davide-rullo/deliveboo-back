@@ -31,6 +31,7 @@
                     <strong>Message: </strong> {{ session('message') }}
                 </div>
             @endif
+
             <div class="row py-5">
 
                 <div class="col-8 col-md-5">

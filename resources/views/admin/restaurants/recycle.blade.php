@@ -15,7 +15,7 @@
 
             <table class="table table-light table-borderless table-responsive-lg table-striped">
                 <thead>
-                    <tr class="text-center">
+                    <tr class="text-center align-middle">
                         <th scope="col">Name</th>
                         <th scope="col">Address</th>
                         <th scope="col">Vat Number</th>
@@ -28,7 +28,7 @@
                 <tbody>
 
                     @forelse ($trashed_restaurants as $trashed)
-                        <tr class="text-center">
+                        <tr class="text-center align-middle">
                             <td>{{ $trashed->name }}</td>
                             <td>{{ $trashed->address }}</td>
                             <td>{{ $trashed->vat_number }}</td>

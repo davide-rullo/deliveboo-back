@@ -59,7 +59,7 @@ class PlateController extends Controller
         // Aggiungere il piatto alla relazione 'plates' del ristorante
         $plate = $restaurant->plates()->create($validated);
 
-        return to_route('admin.plates.index')->with('message', 'Plate created!');
+        return to_route('admin.plates.index')->with('message', '✅ Dish created!');
     }
 
     /**
@@ -86,7 +86,7 @@ class PlateController extends Controller
         $validated = $request->validated();
 
         if ($request->has('cover_image')) {
-            $updatedCoverImage = $request->thumb;
+            $updatedCoverImage = $request->cover_image;
             $file_path = Storage::put('covers', $updatedCoverImage);
 
             if (!is_null($plate->cover_image) && Storage::fileExists($plate->cover_image)) {
@@ -101,7 +101,11 @@ class PlateController extends Controller
         }
 
         $plate->update($validated);
-        return to_route('admin.plates.index')->with('message', 'Plate updated!');
+
+        return to_route('admin.plates.index')->with('message', '✅ Dish updated!');
+
+
+
     }
 
     /**
@@ -113,10 +117,10 @@ class PlateController extends Controller
             Storage::delete($plate->cover_image);
         };
         $plate->delete();
-        return to_route('plates.index')->with('message', 'Your plate was deleted successfully');
+        return to_route('admin.plates.index')->with('message', '✅ Dish deleted successfully');
     }
 
-    public function recycle()
+    /* public function recycle()
     {
         $page_title = 'Plates Recycle Bin';
         $restaurant = Restaurant::where('user_id', Auth::id())->first();
@@ -157,5 +161,5 @@ class PlateController extends Controller
         $restaurantId = $restaurant->id;
         $plate = Plate::onlyTrashed()->where('restaurant_id', $restaurantId)->find($id);
         return view('admin.plates.showTrashed', compact('plate', 'page_title'));
-    }
+    } */
 }
