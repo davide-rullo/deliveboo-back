@@ -61,11 +61,11 @@
                             @endif
 
                             <td>                                
-                                    <a href="{{-- {{ route('admin.restaurants.show', $restaurant->slug) }} --}}"
+                                    <a href="{{-- {{ route('admin.plates.show', $plate->slug) }} --}}"
                                         class="btn btn-outline-dark me-4"><i class="fa-solid fa-eye"></i></a>
 
 
-                                    <a href="{{ route('admin.plates.edit', $plate->id) }}"
+                                    <a href="{{ route('admin.plates.edit', $plate) }}"
                                         class="btn btn-outline-dark"><i class="fa-solid fa-file-pen"></i></a>
 
                                     <!-- Modal trigger button -->

@@ -52,16 +52,12 @@ class PlateController extends Controller
             $validated['cover_image'] = $file_path;
         }
 
-        $plate = Plate::create($validated);
-
-
         $restaurant = Restaurant::where('user_id', Auth::id())->first();
-
         $restaurant->price = str_replace(',', '.', $request->input('price'));
-
         $restaurantId = $restaurant->id;
-        $plate->restaurant_id = $restaurantId;
-        $plate->save();
+
+        // Aggiungere il piatto alla relazione 'plates' del ristorante
+        $plate = $restaurant->plates()->create($validated);
 
         return to_route('admin.plates.index')->with('message', 'Plate created!');
     }
@@ -88,12 +84,10 @@ class PlateController extends Controller
     public function update(UpdatePlatesRequest $request, Plate $plate)
     {
         $validated = $request->validated();
-        /* $validated['slug'] = $plate->generateSlug($request->name); */
 
         if ($request->has('cover_image')) {
             $updatedCoverImage = $request->thumb;
             $file_path = Storage::put('covers', $updatedCoverImage);
-
 
             if (!is_null($plate->cover_image) && Storage::fileExists($plate->cover_image)) {
                 Storage::delete($plate->cover_image);
@@ -107,7 +101,7 @@ class PlateController extends Controller
         }
 
         $plate->update($validated);
-        return to_route('admin.plates.index', compact('plate'))->with('message', 'Plate updated!');
+        return to_route('admin.plates.index')->with('message', 'Plate updated!');
     }
 
     /**
