@@ -19,15 +19,13 @@ class PlateController extends Controller
      */
     public function index()
     {
-        /* $restaurant = Restaurant::where('user_id', Auth::id())->first();
-        $restaurantId = $restaurant->id; */
-        //dd($restaurant, $restaurantId);
-        /* $plates = Plate::where('restaurant_id', '==', 7); */
+        $restaurant = Restaurant::where('user_id', Auth::id())->first();
+        $restaurantId = $restaurant->id;
         $plates = Plate::all();
-        /*  $filteredPlates = $plates->where('restaurant_id', $restaurantId); */
+        $filteredPlates = $plates->where('restaurant_id', $restaurantId);
 
-        //dd($filteredPlate);
-        return view('admin.plates.index', compact('plates'));
+
+        return view('admin.plates.index', compact('filteredPlates'));
     }
 
     /**

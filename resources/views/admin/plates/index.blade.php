@@ -30,7 +30,7 @@
                 </thead>
                 <tbody>
 
-                    @forelse ($plates as $plate)
+                    @forelse ($filteredPlates as $plate)
                         <tr class="text-center">
                             <td>{{ $plate->name }}</td>
                             <td>{{ $plate->description }}</td>
