@@ -22,7 +22,7 @@ return new class extends Migration
             $table->decimal('price', 4, 2)->nullable();
             $table->boolean('is_available')->default(true);
             $table->unsignedBigInteger('restaurant_id')->nullable();
-
+            $table->softDeletes();
 
             $table->timestamps();
         });

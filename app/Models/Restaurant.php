@@ -9,10 +9,12 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Restaurant extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = ['user_id', 'name', 'address', 'vat_number', 'logo', 'slug', 'phone'];
 

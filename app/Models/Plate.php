@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
 use App\Models\Restaurant;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Plate extends Model
 {
     use HasFactory;
-
+    use SoftDeletes;
     protected $fillable = ['name', 'description', 'ingredients', 'cover_image', 'price', 'is_available', 'restaurant_id'];
 
     public static function generateSlug($name)
