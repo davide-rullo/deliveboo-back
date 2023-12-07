@@ -24,7 +24,7 @@
 
                     <input type="text" class="form-control" @error('name') is-invalid @enderror name="name"
                         id="name" aria-describedby="helpId" placeholder="Write the name of your restaurant"
-                        value="{{ old('name') }}">
+                        value="{{ old('name') }}" required>
 
 
 
