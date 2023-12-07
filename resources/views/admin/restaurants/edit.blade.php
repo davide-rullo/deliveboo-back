@@ -63,7 +63,7 @@
                                     <input class="form-check-input mx-1" @error('types') is-invalid @enderror
                                         type="checkbox" name="types[]" value="{{ $type->id }}"
                                         id="type{{ $type->id }}"
-                                        {{ in_array($type->id, old('types', [])) ? 'checked' : '' }}>
+                                        {{--  {{ in_array($type->id, old('types', [])) ? 'checked' : '' }} --}}{{ $restaurant->types->contains($type) ? 'checked' : '' }}>
                                     <label class="form-check-label" for="type{{ $type->id }}">
                                         {{ $type->name }}
                                     </label>
