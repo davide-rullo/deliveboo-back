@@ -11,6 +11,7 @@ use App\Models\Type;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use App\Models\Plate;
 
 class RestaurantController extends Controller
 {
@@ -126,6 +127,12 @@ class RestaurantController extends Controller
         if (!is_null($restaurant->logo) && Storage::fileExists($restaurant->logo)) {
             Storage::delete($restaurant->logo);
         };
+
+        $plates = Plate::where('restaurant_id', $restaurant->id)->get();
+        foreach ($plates as $plate) {
+            $plate->delete();
+        }
+
         $restaurant->delete();
         return to_route('admin.restaurants.index')->with('message', 'Your restaurant was deleted successfully');
     }
