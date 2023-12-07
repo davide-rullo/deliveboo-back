@@ -14,7 +14,7 @@
                     </a>
                 @endif
             </div>
-            <div class="row justify-content-end py-5">
+            <div class="row py-5">
 
                 <div class="col-8 col-md-5">
 

@@ -121,15 +121,18 @@
 
                             </li>
 
+                            @if (isset($restaurant))
+                                <li class="nav-item">
 
-                            <li class="nav-item">
+                                    <a class="nav-link text-muted {{ Route::currentRouteName() == 'admin.plates.index' ? 'bg_my_light-pink' : '' }}"
+                                        href="{{ route('admin.plates.index') }}">
+                                        <i class="fa-solid fa-utensils fa-lg fa-fw"></i> Menu
+                                    </a>
 
-                                <a class="nav-link text-muted {{ Route::currentRouteName() == 'admin.plates.index' ? 'bg_my_light-pink' : '' }}"
-                                    href="{{ route('admin.plates.index') }}">
-                                    <i class="fa-solid fa-utensils fa-lg fa-fw"></i> Menu
-                                </a>
+                                </li>
+                            @else
+                            @endif
 
-                            </li>
 
 
                         </ul>
