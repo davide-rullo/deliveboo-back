@@ -15,7 +15,7 @@
 
 
 
-            <table class="table table-primary">
+            <table class="table table-light table-borderless table-responsive-lg table-striped">
                 <thead>
                     <tr class="text-center">
                         <th scope="col">Name</th>
