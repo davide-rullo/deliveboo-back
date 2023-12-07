@@ -25,9 +25,9 @@ class UpdatePlatesRequest extends FormRequest
             'name' => ['required', 'bail', 'min:3', 'max:50'],
             'description' => ['nullable'],
             'ingredients' => ['nullable'],
-            'cover_image' => ['nullable', 'image', 'max:500', 'mimes:png,jpg'],
+            'cover_image' => ['nullable', 'image', 'max:500', 'mimes:png,jpg,webp'],
             'price' => ['required'],
-            'is_available' => ['required'],
+            'is_available' => ['nullable'],
         ];
     }
 }

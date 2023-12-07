@@ -11,7 +11,9 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fontawesome 6 cdn -->
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css' integrity='sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==' crossorigin='anonymous' referrerpolicy='no-referrer' />
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css'
+        integrity='sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=='
+        crossorigin='anonymous' referrerpolicy='no-referrer' />
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -34,7 +36,9 @@
             </div>
 
             <div class="d-flex align-items-center">
-                <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler position-absolute d-md-none collapsed" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
+                    aria-expanded="false" aria-label="Toggle navigation">
                     <span><img height="40" src="{{ asset('storage/img/logo.png') }}" alt=""></span>
                 </button>
             </div>
@@ -45,14 +49,16 @@
 
             <ul class="m-0 list-unstyled">
                 <li class="nav-item dropstart">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle text-muted" href="#" role="button"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }}
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
                         <a class="dropdown-item" href="{{ url('profile') }}">{{ __('Profile') }}</a>
-                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>
@@ -76,7 +82,8 @@
                         <ul class="nav flex-column">
 
                             <li class="">
-                                <a class="d-md-none nav-link text-muted {{ Route::currentRouteName() == '/' ? 'bg_my_light-pink' : '' }}" href="{{ url('/') }}">
+                                <a class="d-md-none nav-link text-muted {{ Route::currentRouteName() == '/' ? 'bg_my_light-pink' : '' }}"
+                                    href="{{ url('/') }}">
                                     <i class="fa-solid fa-house fa-lg fa-fw"></i> Home
                                 </a>
                             </li>
@@ -89,7 +96,8 @@
 
                             <li class="nav-item">
 
-                                <a class="nav-link text-muted {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg_my_light-pink' : '' }}" href="{{ route('admin.dashboard') }}">
+                                <a class="nav-link text-muted {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg_my_light-pink' : '' }}"
+                                    href="{{ route('admin.dashboard') }}">
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
                                 </a>
 
@@ -97,7 +105,8 @@
 
                             <li class="nav-item">
 
-                                <a class="nav-link text-muted {{ Route::currentRouteName() == 'admin.restaurants.index' ? 'bg_my_light-pink' : '' }}" href="{{ route('admin.restaurants.index') }}">
+                                <a class="nav-link text-muted {{ Route::currentRouteName() == 'admin.restaurants.index' ? 'bg_my_light-pink' : '' }}"
+                                    href="{{ route('admin.restaurants.index') }}">
                                     <i class="fa-solid fa-utensils fa-lg fa-fw"></i> Restaurant
                                 </a>
 
@@ -113,13 +122,18 @@
                             </li>
 
 
-                            <li class="nav-item">
+                            @if (isset($restaurant))
+                                <li class="nav-item">
 
-                                <a class="nav-link text-muted {{ Route::currentRouteName() == 'admin.plates.index' ? 'bg_my_light-pink' : '' }}" href="{{ route('admin.plates.index') }}">
-                                    <i class="fa-solid fa-utensils fa-lg fa-fw"></i> Menu
-                                </a>
+                                    <a class="nav-link text-muted {{ Route::currentRouteName() == 'admin.plates.index' ? 'bg_my_light-pink' : '' }}"
+                                        href="{{ route('admin.plates.index') }}">
+                                        <i class="fa-solid fa-utensils fa-lg fa-fw"></i> Menu
+                                    </a>
 
-                            </li>
+                                </li>
+                            @else
+                            @endif
+
 
 
 
