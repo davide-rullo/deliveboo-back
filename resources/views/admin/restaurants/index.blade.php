@@ -21,9 +21,21 @@
 
                     @if ($restaurant)
                         <div class="card shadow">
-                            <div class="card-img-top">
-                                <img class="img-fluid" src="{{ asset('storage/' . $restaurant->logo) }}" alt="">
-                            </div>
+
+
+                            @if ($restaurant->logo)
+                                {{-- <img width="100" src="{{ asset('storage/' . $plate->cover_image) }}"> --}}
+
+                                <div class="card-img-top">
+                                    <img class="img-fluid" src="{{ asset('storage/' . $restaurant->logo) }}" alt="">
+                                </div>
+                            @else
+                                <div class="card-img-top">
+                                    <img class="img-fluid" src="{{ asset('storage/img/delivery.jpeg') }}">
+                                </div>
+                            @endif
+
+
                             <div class="card-body">
                                 <div class="card-title">
                                     <h6>Your Restaurant:</h6>
@@ -49,7 +61,7 @@
                                         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg"
                                             role="document">
                                             <div class="modal-content">
-                                                <div class="modal-header bg-danger">
+                                                <div class="modal-header bg_my_dark-pink">
                                                     <h5 class="modal-title" id="modalTitleId">Delete Restaurant</h5>
 
                                                     <button type="button" class="btn-close bg-white"
@@ -71,7 +83,8 @@
 
                                                         @method('DELETE')
 
-                                                        <button type="submit" class="btn btn-danger">Confirm</button>
+                                                        <button type="submit"
+                                                            class="btn btn-danger bg_my_dark-pink">Confirm</button>
 
                                                     </form>
                                                 </div>
