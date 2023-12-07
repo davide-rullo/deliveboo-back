@@ -27,7 +27,7 @@ class StorePlatesRequest extends FormRequest
             'ingredients' => ['nullable'],
             'cover_image' => ['nullable', 'image', 'max:500', 'mimes:png,jpg'],
             'price' => ['required'],
-            'is_available' => ['required'],
+            'is_available' => ['nullable'],
         ];
     }
 }

@@ -3,7 +3,7 @@
 @section('content')
     <div class="vh-100 back_image">
         <div class="container">
-            <h1 class="pt-5 pb-3 text-center">Your Disches</h1>
+            <h1 class="pt-5 pb-3 text-center">Your Dishes</h1>
 
             <div class="d-flex justify-content-end">
                 <a href="{{ route('admin.plates.create') }}" class="btn btn-outline-dark my-4"><i class="fa-solid fa-plus"></i>

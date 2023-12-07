@@ -33,19 +33,20 @@ class PlateController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create($restaurant_id)
+    public function create()
     {
-        $plates = Plate::where('restaurant_id', $restaurant_id)->first();
-        return view('admin.restaurants.plates.create', compact('plates', 'restaurant_id'));
+        $restaurant = Restaurant::where('user_id', Auth::id())->first();
+        $restaurantId = $restaurant->id;
+        $plates = Plate::where('restaurant_id', $restaurantId)->first();
+        return view('admin.plates.create', compact('plates', 'restaurantId'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePlatesRequest $request, $restaurant_id)
+    public function store(StorePlatesRequest $request)
     {
         $validated = $request->validated();
-        dd($request);
         $validated['slug'] = Plate::generateSlug($validated['name']);
 
         if ($request->has('cover_image')) {
@@ -53,25 +54,12 @@ class PlateController extends Controller
             $validated['cover_image'] = $file_path;
         }
 
-        Plate::create([
-            'name' => $validated['name'],
-            'price' => $validated['price'],
-            'description' => $validated['description'],
-            'cover_image' => $validated['cover_image'],
-            'is_avaible' => $validated['is_avaible'],
-            'ingredients' => $validated['ingredients'],
-            'restaurant_id' => $restaurant_id,
-            'slug' => Str::slug($validated['name']),
+        $plate = Plate::create($validated);
 
-        ]);
-
-        /* $plate = Plate::create($validated);
-
-        $restaurant = Restaurant::where('user_id', Auth::id())->get();
-        dd($restaurant);
-        $restaurant_id = Auth::id();
-
-        $plate->save(); */
+        $restaurant = Restaurant::where('user_id', Auth::id())->first();
+        $restaurantId = $restaurant->id;
+        $plate->restaurant_id = $restaurantId;
+        $plate->save();
 
         return to_route('admin.plates.index')->with('message', 'Plate created!');
     }
