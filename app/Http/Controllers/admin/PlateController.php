@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class PlateController extends Controller
 {
@@ -18,29 +19,30 @@ class PlateController extends Controller
      */
     public function index()
     {
-        $restaurant = Restaurant::where('user_id', Auth::id())->first();
-        $restaurantId = $restaurant->id;
+        /* $restaurant = Restaurant::where('user_id', Auth::id())->first();
+        $restaurantId = $restaurant->id; */
         //dd($restaurant, $restaurantId);
         /* $plates = Plate::where('restaurant_id', '==', 7); */
         $plates = Plate::all();
-        $filteredPlates = $plates->where('restaurant_id', $restaurantId);
+        /*  $filteredPlates = $plates->where('restaurant_id', $restaurantId); */
 
         //dd($filteredPlate);
-        return view('admin.plates.index', compact('filteredPlates'));
+        return view('admin.plates.index', compact('plates'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($restaurant_id)
     {
-        return view('admin.plates.index');
+        $plates = Plate::where('restaurant_id', $restaurant_id)->first();
+        return view('admin.restaurants.plates.create', compact('plates', 'restaurant_id'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePlatesRequest $request, Plate $plate, Restaurant $restaurant)
+    public function store(StorePlatesRequest $request, $restaurant_id)
     {
         $validated = $request->validated();
         dd($request);
@@ -51,15 +53,27 @@ class PlateController extends Controller
             $validated['cover_image'] = $file_path;
         }
 
-        $plate = Plate::create($validated);
+        Plate::create([
+            'name' => $validated['name'],
+            'price' => $validated['price'],
+            'description' => $validated['description'],
+            'cover_image' => $validated['cover_image'],
+            'is_avaible' => $validated['is_avaible'],
+            'ingredients' => $validated['ingredients'],
+            'restaurant_id' => $restaurant_id,
+            'slug' => Str::slug($validated['name']),
 
-        $restaurant = Restaurant::where('user_id' == Auth::id())->get();
+        ]);
+
+        /* $plate = Plate::create($validated);
+
+        $restaurant = Restaurant::where('user_id', Auth::id())->get();
         dd($restaurant);
-        $plate->restaurant_id = Auth::id();
+        $restaurant_id = Auth::id();
 
-        $plate->save();
+        $plate->save(); */
 
-        return to_route('admin.plates.index', compact('plate'))->with('message', 'Plate created!');
+        return to_route('admin.plates.index')->with('message', 'Plate created!');
     }
 
     /**
