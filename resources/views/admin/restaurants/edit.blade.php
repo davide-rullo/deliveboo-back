@@ -24,8 +24,8 @@
                 <div class="mb-3">
                     <label for="name" class="form-label text-muted">Name restaurant</label>
                     <input type="text" class="form-control" @error('name') is-invalid @enderror name="name"
-                        id="name" aria-describedby="helpId" placeholder="Acolyte Eco Battle staff"
-                        value="{{ old('name', $restaurant->name) }}">
+                        id="name" aria-describedby="helpId" placeholder="Write the name of your restaurant"
+                        value="{{ old('name', $restaurant->name) }}" required>
                     <small id="nameHelper" class="form-text text-white">
                         Type your name here
 
