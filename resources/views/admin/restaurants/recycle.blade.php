@@ -1,61 +1,51 @@
 @extends('layouts.admin')
 
 @section('content')
+
 <div class="vh-100 back_image">
-
     <div class="container">
-
-        <div class="d-flex justify-content-end py-3">
-
+        <h1 class="pt-5 pb-3 text-center">Trashed restaurants</h1>
 
 
 
-            @if (!$restaurant)
-            <a class="btn btn-outline-dark" href="{{ route('admin.restaurants.create') }}">
-                <i class="fa-solid fa-utensils"></i>
-                Add Your Restaurant
-            </a>
-            @endif
+
+        <table class="table table-primary">
+            <thead>
+                <tr class="text-center">
+                    <th scope="col">Name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Vat Number</th>
+                    <th scope="col">Logo</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Actions</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @forelse ($trashed_restaurants as $trashed)
+                <tr class="text-center">
+                    <td>{{ $trashed->name }}</td>
+                    <td>{{ $trashed->address }}</td>
+                    <td>{{ $trashed->vat_number }}</td>
+                    <td>{{ $trashed->phone }}</td>
+                    <td>
+                        @if ($trashed->logo)
+                        {{-- <img width="100" src="{{ asset('storage/' . $trashed->logo) }}"> --}}
+
+                        <img width="100" src="{{ asset('storage/' . $trashed->logo) }}">
+                        @else
+                        <img width="100" src="{{ asset('storage/covers/american.png') }}">
+                        @endif
+                    </td>
 
 
-            <a class="btn btn-outline-dark" href="{{ route('admin.restaurants.recycle') }}">
-                <i class="fa-solid fa-utensils"></i>
-                Trashed Restaurants
-            </a>
-
-        </div>
-        <div class="row py-5">
-
-            <div class="col-8 col-md-5">
-
-
-                @if ($restaurant)
-                <div class="card shadow">
-
-
-                    @if ($restaurant->logo)
-                    {{-- <img width="100" src="{{ asset('storage/' . $plate->cover_image) }}"> --}}
-
-                    <div class="card-img-top">
-                        <img class="img-fluid" src="{{ asset('storage/' . $restaurant->logo) }}" alt="">
-                    </div>
-                    @else
-                    <div class="card-img-top">
-                        <img class="img-fluid" src="{{ asset('storage/img/delivery.jpeg') }}">
-                    </div>
-                    @endif
-
-
-                    <div class="card-body">
-                        <div class="card-title">
-                            <h6>Your Restaurant:</h6>
-                            <h4>{{ $restaurant->name }}</h4>
-                        </div>
+                    <td>
                         <div class="card-text">
                             <a href="{{ route('admin.restaurants.show', $restaurant->slug) }}" class="btn btn-outline-dark me-4"><i class="fa-solid fa-eye"></i></a>
 
 
-                            <a href="{{ route('admin.restaurants.edit', $restaurant) }}" class="btn btn-outline-dark"><i class="fa-solid fa-file-pen"></i></a>
+                            <a href="#" class="btn btn-outline-dark"> <i class="fa-solid fa-recycle"></i></a>
 
                             <!-- Modal trigger button -->
                             <a type="button" class="btn btn-outline-danger mx-sm-4" data-bs-toggle="modal" data-bs-target="#modalId"><i class="fa-solid fa-trash-can"></i></a>
@@ -92,31 +82,21 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                @else
-                <div class="card">
-                    <div class="card-img-top">
-                        <img class="img-fluid" src="{{ asset('storage/img/delivery.jpeg') }}" alt="">
-                    </div>
-                    <div class="card-body">
-                        <div class="card-title">
-                            <a class="btn btn-outline-dark" href="{{ route('admin.restaurants.create') }}">
-                                <i class="fa-solid fa-utensils"></i>
-                                Add Your Restaurant
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                @endif
 
-
-            </div>
-
-        </div>
+                    </td>
 
 
 
+
+                    @empty
+                <tr class="">
+                    <td scope="row">No restaurants trashed!</td>
+                </tr>
+                @endforelse
+
+            </tbody>
+        </table>
     </div>
 </div>
+
 @endsection

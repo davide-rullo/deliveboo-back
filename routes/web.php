@@ -28,6 +28,14 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name("admin.")->group(
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('restaurants', RestaurantController::class)->parameters(['restaurants' => 'restaurant:slug']);
+
+    Route::get('/restaurants/recycle', [RestaurantController::class, 'recycle'])->name('restaurants.recycle');
+
+    Route::get('/restore/{id}', [RestaurantController::class, 'restore'])->name('restore');
+
+    Route::get('/forceDelete/{id}', [RestaurantController::class, 'forceDelete'])->name('forceDelete');
+
+
     Route::resource('plates', PlateController::class)->parameters(['plates' => 'plate:slug']);
 
     Route::get('/restaurants/{restaurant}/plates/create', [PlateController::class, 'create'])->name('restaurants.plates.create');
