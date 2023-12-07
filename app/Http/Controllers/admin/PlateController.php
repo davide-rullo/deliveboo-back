@@ -88,10 +88,12 @@ class PlateController extends Controller
     public function update(UpdatePlatesRequest $request, Plate $plate)
     {
         $validated = $request->validated();
-        $validated['slug'] = $plate->generateSlug($request->name);
+        /* $validated['slug'] = $plate->generateSlug($request->name); */
+
         if ($request->has('cover_image')) {
             $updatedCoverImage = $request->thumb;
             $file_path = Storage::put('covers', $updatedCoverImage);
+
 
             if (!is_null($plate->cover_image) && Storage::fileExists($plate->cover_image)) {
                 Storage::delete($plate->cover_image);
@@ -100,8 +102,12 @@ class PlateController extends Controller
             $validated['cover_image'] = $file_path;
         }
 
+        if (!Str::is($plate->getOriginal('name'), $request->name)) {
+            $validated['slug'] = $plate->generateSlug($request->name);
+        }
+
         $plate->update($validated);
-        return to_route('plates.index')->with('message', 'Plate updated!');
+        return to_route('admin.plates.index', compact('plate'))->with('message', 'Plate updated!');
     }
 
     /**
