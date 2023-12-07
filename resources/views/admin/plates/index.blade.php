@@ -45,9 +45,10 @@
 
                                 @if ($plate->cover_image)
                                     {{-- <img width="100" src="{{ asset('storage/' . $plate->cover_image) }}"> --}}
-                                    <img width="100" src="{{ asset('storage/covers/panino.jpg') }}">
+
+                                    <img width="100" src="{{ asset('storage/' . $plate->cover_image) }}">
                                 @else
-                                    N/A
+                                    <img width="100" src="{{ asset('storage/covers/panino.jpg') }}">
                                 @endif
                             </td>
                             <td>{{ $plate->price }} €</td>

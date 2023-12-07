@@ -56,7 +56,11 @@ class PlateController extends Controller
 
         $plate = Plate::create($validated);
 
+
         $restaurant = Restaurant::where('user_id', Auth::id())->first();
+
+        $restaurant->price = str_replace(',', '.', $request->input('price'));
+
         $restaurantId = $restaurant->id;
         $plate->restaurant_id = $restaurantId;
         $plate->save();
