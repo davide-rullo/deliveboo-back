@@ -77,9 +77,9 @@
                 <!-- Campo: Prezzo -->
                 <div class="mb-3">
                     <label for="price" class="form-label text-muted">Price</label>
-                    <input type="number" step=".01" class="form-control" @error('price') is-invalid @enderror
-                        name="price" id="price" aria-describedby="priceHelper" placeholder="0123456789"
-                        value="{{ old('price') }}">
+                    <input type="number" min="1" max="99" step=".01" class="form-control"
+                        @error('price') is-invalid @enderror name="price" id="price" aria-describedby="priceHelper"
+                        placeholder="0123456789" value="{{ old('price') }}">
                     <small id="priceHelper" class="form-text text-muted">
                         Type the dish price here
 
@@ -87,6 +87,14 @@
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </small>
+                </div>
+
+                {{-- Campo: Available --}}
+                <div class="mb-4">
+                    <label class="text-muted" for="is_available">Available:</label>
+                    <input type="radio" id="is_available" name="is_available" value="1">
+                    <label class="text-muted" for="is_available">Not Available:</label>
+                    <input type="radio" id="is_available" name="is_available" value="0">
                 </div>
 
                 {{-- Campo: Tipo di piatto --}}

@@ -125,9 +125,9 @@ class RestaurantController extends Controller
 
         $restaurant->types()->detach();
 
-        if (!is_null($restaurant->logo) && Storage::fileExists($restaurant->logo)) {
+        /* if (!is_null($restaurant->logo) && Storage::fileExists($restaurant->logo)) {
             Storage::delete($restaurant->logo);
-        };
+        }; */
 
         $plates = Plate::where('restaurant_id', $restaurant->id)->get();
         foreach ($plates as $plate) {
@@ -152,22 +152,23 @@ class RestaurantController extends Controller
 
         $restaurant =  Restaurant::onlyTrashed()->where('user_id', Auth::id())->find($id);
         $restaurant->restore();
-        return to_route('admin.restaurants.recycle')->with('message', 'Your restaurant was restored successfully');
+        return to_route('admin.restaurants.index')->with('message', 'Your restaurant was restored successfully');
     }
 
     public function forceDelete($id)
     {
 
         $restaurant =  Restaurant::onlyTrashed()->where('user_id', Auth::id())->find($id);
-        if (!is_null($restaurant->logo)) {
+
+        /* if (!is_null($restaurant->logo) && Storage::fileExists($restaurant->logo)) {
             Storage::delete($restaurant->logo);
-        }
+        } */
 
         $restaurant->types()->detach();
 
         $restaurant->forceDelete();
 
-        return to_route('admin.restaurants.recycle')->with('message', 'Your Restaurant was deleted permanently');
+        return to_route('admin.recycle')->with('message', 'Your Restaurant was deleted permanently');
     }
 
     public function showTrashed($id)

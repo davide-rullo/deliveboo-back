@@ -53,7 +53,7 @@
                             </td>
                             <td>{{ $plate->price }} €</td>
 
-                            @if ($plate->is_available == 1)
+                            @if ($plate->is_available === 1)
                                 <td>✅</td>
                             @else
                                 <td>❌</td>
@@ -63,7 +63,7 @@
 
                         @empty
                         <tr class="">
-                            <td scope="row">No dishes yet!</td>
+                            <td colspan="6">No dishes yet!</td>
                         </tr>
                     @endforelse
 
