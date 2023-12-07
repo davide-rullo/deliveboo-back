@@ -13,7 +13,7 @@ class Plate extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    protected $fillable = ['name', 'description', 'ingredients', 'cover_image', 'price', 'is_available', 'restaurant_id'];
+    protected $fillable = ['name','slug','description', 'ingredients', 'cover_image', 'price', 'is_available', 'restaurant_id'];
 
     public static function generateSlug($name)
     {
