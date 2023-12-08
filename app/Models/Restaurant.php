@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Plate;
 
 class Restaurant extends Model
 {
@@ -35,6 +36,6 @@ class Restaurant extends Model
 
     public function plates(): HasMany
     {
-        return $this->hasMany(Plates::class);
+        return $this->hasMany(Plate::class);
     }
 }

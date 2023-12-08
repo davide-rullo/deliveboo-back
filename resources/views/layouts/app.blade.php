@@ -96,7 +96,7 @@
 
         </header>
 
-        <main class="">
+        <main class=" bg_my_light-pink">
             @yield('content')
         </main>
     </div>
