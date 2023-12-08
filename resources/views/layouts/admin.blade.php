@@ -127,12 +127,22 @@
 
                                     <a class="nav-link text-muted {{ Route::currentRouteName() == 'admin.plates.index' ? 'bg_my_light-pink' : '' }}"
                                         href="{{ route('admin.plates.index') }}">
-                                        <i class="fa-solid fa-utensils fa-lg fa-fw"></i> Menu
+                                        <i class="fa-solid fa-calendar-minus fa-lg fa-fw"></i> Menu
                                     </a>
 
                                 </li>
                             @else
+                                <li class="nav-item">
+
+                                    <a class="nav-link text-muted {{ Route::currentRouteName() == 'admin.plates.index' ? 'bg_my_light-pink' : '' }}"
+                                        href="{{ url('admin/plates/') }}">
+                                        <i class="fa-solid fa-calendar-minus fa-lg fa-fw"></i> Menu
+                                    </a>
+
+                                </li>
                             @endif
+
+
 
 
 
