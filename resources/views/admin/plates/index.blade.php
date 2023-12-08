@@ -3,6 +3,9 @@
 @section('content')
     <div class="vh-100 back_image">
         <div class="container">
+            <a class="btn btn-secondary mt-2" href="{{ route('admin.restaurants.index') }}">
+                <i class="fa-solid fa-arrow-left"></i> Back to Home
+            </a>
             <h1 class="pt-5 pb-3 text-center">Your Dishes</h1>
 
             <div class="d-flex justify-content-end">

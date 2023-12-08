@@ -2,7 +2,10 @@
 
 @section('content')
     <div class="vh-100 back_image">
-        <div class="container py-5">
+        <div class="container">
+            <a class="btn btn-secondary mt-2" href="{{ route('admin.plates.index') }}">
+                <i class="fa-solid fa-arrow-left"></i> Back to Dish Home
+            </a>
             <!-- Header della pagina -->
             <div class="row mb-3">
                 <div class="col d-flex align-items-center mt-4">

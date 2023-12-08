@@ -15,12 +15,13 @@
                 <h1 class="display-5 fw-bold">
                     Join the DeliveBoo Feast: Boost Your Restaurant with Booster the Rooster!
                 </h1>
-                <a class="btn btn-outline-dark my-3" href="{{ route('admin.restaurants.index') }}">
+                <a id="animation" class="btn btn-outline-dark my-3" href="{{ route('admin.restaurants.index') }}"
+                    onclick="animateAndRedirect(event)">
                     <i class="fa-solid fa-utensils"></i>
                     See Your Restaurant
                 </a>
                 <div class="row">
-                    <div class="col-2">
+                    <div id="pollo_mobile" class="col-2">
                         <img class="img-fluid" src="{{ asset('storage/img/pollo.png') }}" alt="">
                     </div>
                 </div>
@@ -28,4 +29,21 @@
             </div>
         </div>
     </div>
+    <script>
+        function animateAndRedirect(event) {
+            event.preventDefault();
+
+            // Seleziono il div con id pollo_mobile
+            var polloMobile = document.getElementById('pollo_mobile');
+
+            // Animazione: Sposto il div verso destra di 500px in 1 secondo
+            polloMobile.style.transition = 'margin-left 1s ease-out';
+            polloMobile.style.marginLeft = (polloMobile.offsetLeft + 500) + 'px';
+
+            // Attendo 3 secondi prima di reindirizzare alla rotta
+            setTimeout(function() {
+                window.location.href = event.target.href;
+            }, 1000);
+        }
+    </script>
 @endsection
