@@ -27,8 +27,8 @@
                 <thead>
                     <tr class="text-center align-middle">
                         <th scope="col">Name</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Ingredients</th>
+                        {{-- <th scope="col">Description</th> --}}
+                        {{-- <th scope="col">Ingredients</th> --}}
                         <th scope="col">Image</th>
                         <th scope="col">Price</th>
                         <th scope="col">Available</th>
@@ -42,8 +42,8 @@
                     @forelse ($filteredPlates as $plate)
                         <tr class="text-center align-middle">
                             <td>{{ $plate->name }}</td>
-                            <td>{{ $plate->description }}</td>
-                            <td>{{ $plate->ingredients }}</td>
+                            {{-- <td>{{ $plate->description }}</td>
+                            <td>{{ $plate->ingredients }}</td> --}}
                             <td>
 
 
@@ -95,7 +95,7 @@
                                                 <h4>Do you really want to delete this Dish?</h4>
                                             </div>
 
-                            
+
 
 
                                             <div class="modal-footer">
@@ -123,7 +123,7 @@
 
                         @empty
                         <tr class="">
-                            <td colspan="6">No dishes yet!</td>
+                            <td colspan="5">No dishes yet!</td>
                         </tr>
                     @endforelse
 

@@ -131,7 +131,7 @@
                                     </a>
 
                                 </li>
-                            @else
+                            @elseif (Route::currentRouteName() == 'admin.plates.index')
                                 <li class="nav-item">
 
                                     <a class="nav-link text-muted {{ Route::currentRouteName() == 'admin.plates.index' ? 'bg_my_light-pink' : '' }}"
