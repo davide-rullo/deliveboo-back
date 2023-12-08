@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('page-title', 'Create restaurant')
+@section('title', 'Create Restaurant')
 
 @section('content')
     <div class="vh-100 back_image">

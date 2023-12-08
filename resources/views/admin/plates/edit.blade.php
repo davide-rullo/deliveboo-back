@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('page-title', 'Edit Dish')
+@section('title', 'Edit Dish')
 
 @section('content')
 
