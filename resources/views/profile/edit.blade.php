@@ -1,4 +1,7 @@
 @extends('layouts.app')
+
+@section('title', 'DeliveBoo-Back')
+
 @section('content')
     <div class="container bg_my_light-pink pb-4">
         <h2 class="fs-4 text-secondary py-4">

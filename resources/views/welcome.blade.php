@@ -1,4 +1,7 @@
 @extends('layouts.app')
+
+@section('title', 'DeliveBoo-Back')
+
 @section('content')
     <div class="vh-100 back_image">
 

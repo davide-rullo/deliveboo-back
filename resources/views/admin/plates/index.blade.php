@@ -1,5 +1,7 @@
 @extends('layouts.admin')
 
+@section('title', 'Your Dishes')
+
 @section('content')
     <div class="vh-100 back_image">
         <div class="container">
