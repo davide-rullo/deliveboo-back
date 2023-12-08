@@ -64,6 +64,7 @@
                                 <td>❌</td>
                             @endif
 
+
                             <td>
                                 <a href="{{ route('admin.plates.show', $plate->id) }}" class="btn btn-outline-dark me-4"><i
                                         class="fa-solid fa-eye"></i></a>
@@ -93,6 +94,8 @@
                                             <div class="modal-body p-5">
                                                 <h4>Do you really want to delete this Dish?</h4>
                                             </div>
+
+                            
 
 
                                             <div class="modal-footer">
