@@ -15,4 +15,13 @@ class RestaurantController extends Controller
             'selected' => Restaurant::all()->random(3)
         ]);
     }
+
+    public function restaurants()
+    {
+        /* $restaurants = Restaurant::with('type')->orderByDesc('id')->paginate(20); */
+        return response()->json([
+            'status' => 'success',
+            'restaurants' => Restaurant::with('types')->orderByDesc('id')->paginate(20),
+        ]);
+    }
 }
