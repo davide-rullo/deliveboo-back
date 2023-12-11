@@ -21,4 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/restaurants', [RestaurantController::class, 'restaurants']);
 
-Route::get('/restaurants/selected', [RestaurantController::class, 'selected']);
+Route::get('/selected', [RestaurantController::class, 'selected']);
