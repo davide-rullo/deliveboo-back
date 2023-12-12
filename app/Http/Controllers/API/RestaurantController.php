@@ -12,7 +12,7 @@ class RestaurantController extends Controller
     {
         return response()->json([
             'status' => 'success',
-            'selected' => Restaurant::all()->random(3)
+            'selected' => Restaurant::all()->random(6)
         ]);
     }
 
