@@ -28,3 +28,5 @@ Route::get('/selected', [RestaurantController::class, 'selected']);
 
 Route::get('/types', [TypeController::class, 'index']);
 Route::get('/types/{type:slug}', [TypeController::class, 'show']);
+
+Route::get('restaurants/{restaurant:slug}', [RestaurantController::class, 'show']);
