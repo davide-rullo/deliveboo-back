@@ -24,4 +24,28 @@ class RestaurantController extends Controller
             'restaurants' => Restaurant::with('types')->orderByDesc('id')->paginate(20),
         ]);
     }
+
+    public function show($slug)
+    {
+        $restaurant = Restaurant::with('types', 'plates')->where('slug', $slug)->first();
+
+
+
+        if ($restaurant) {
+            return response()->json([
+                'success' => true,
+                'result' => $restaurant
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'result' => 'Ops, page not found'
+            ]);
+        };
+
+        return response()->json([
+            'success' => true,
+            'result' => $restaurant
+        ]);
+    }
 }
