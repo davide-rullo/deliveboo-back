@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\RestaurantController;
 use App\Http\Controllers\Admin\PlateController;
+use App\Http\Controllers\Api\Payments\BrainTreeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,6 @@ use App\Http\Controllers\Admin\PlateController;
 Route::get('/', function () {
     return view('welcome');
 });
-
 
 
 
