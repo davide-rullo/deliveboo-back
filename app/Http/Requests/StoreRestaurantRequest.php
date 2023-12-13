@@ -39,7 +39,8 @@ class StoreRestaurantRequest extends FormRequest
             'user_id' => ['nullable', 'exists:users,id'],
             'vat_number' => ['nullable', 'min:11', 'max:16'],
             'logo' => ['nullable', 'image', 'max:500', 'mimes:png,jpg,webp'],
-            'phone' => ['nullable']
+            'phone' => ['nullable'],
+            'types' => ['required', 'min:1'] // Aggiunto: Il campo "types" è obbligatorio e deve avere almeno un elemento
         ];
     }
 }
