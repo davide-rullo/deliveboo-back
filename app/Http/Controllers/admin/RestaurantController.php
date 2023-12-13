@@ -57,14 +57,20 @@ class RestaurantController extends Controller
             $validated['logo'] = $file_path;
         }
 
-        /* dd($validated); */
-
-        $restaurant = Restaurant::create($validated);
-        $restaurant->types()->attach($request->types);
+        $restaurant = new Restaurant($validated);
         $restaurant->user_id = Auth::id();
         $restaurant->save();
+
+        // Verifica se il campo "types" è presente e non vuoto prima di eseguire l'operazione di attach
+        if ($request->has('types') && !empty($request->types)) {
+            $restaurant->types()->attach($request->types);
+        } else {
+            
+        }
+
         return to_route('admin.restaurants.index', compact('restaurant'))->with('message', '✅ Restaurant created successfully! You are ready to go');
     }
+
 
     /**
      * Display the specified resource.
@@ -93,14 +99,16 @@ class RestaurantController extends Controller
         /* $validated['slug'] = $restaurant->generateSlug($request->name); */
         //dd($request);
 
+        /* if (!is_null($restaurant->logo) || Storage::fileExists($restaurant->logo)) {
+            Storage::delete($restaurant->logo);
+        } */
+
         if ($request->has('logo')) {
             $updatedLogo = $request->logo;
             $file_path = Storage::put('img', $updatedLogo);
 
 
-            if (!is_null($restaurant->logo) || Storage::fileExists($restaurant->logo)) {
-                Storage::delete($restaurant->logo);
-            }
+
 
             $validated['logo'] = $file_path;
         }
@@ -160,10 +168,9 @@ class RestaurantController extends Controller
 
         $restaurant =  Restaurant::onlyTrashed()->where('user_id', Auth::id())->find($id);
 
-        /* if (!is_null($restaurant->logo) && Storage::fileExists($restaurant->logo)) {
+        if (!is_null($restaurant->logo) && Storage::fileExists($restaurant->logo)) {
             Storage::delete($restaurant->logo);
-        } */
-
+        }
         $restaurant->types()->detach();
 
         $restaurant->forceDelete();
