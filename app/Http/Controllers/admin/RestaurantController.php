@@ -99,14 +99,16 @@ class RestaurantController extends Controller
         /* $validated['slug'] = $restaurant->generateSlug($request->name); */
         //dd($request);
 
+        /* if (!is_null($restaurant->logo) || Storage::fileExists($restaurant->logo)) {
+            Storage::delete($restaurant->logo);
+        } */
+
         if ($request->has('logo')) {
             $updatedLogo = $request->logo;
             $file_path = Storage::put('img', $updatedLogo);
 
 
-            if (!is_null($restaurant->logo) || Storage::fileExists($restaurant->logo)) {
-                Storage::delete($restaurant->logo);
-            }
+
 
             $validated['logo'] = $file_path;
         }
@@ -166,10 +168,9 @@ class RestaurantController extends Controller
 
         $restaurant =  Restaurant::onlyTrashed()->where('user_id', Auth::id())->find($id);
 
-        /* if (!is_null($restaurant->logo) && Storage::fileExists($restaurant->logo)) {
+        if (!is_null($restaurant->logo) && Storage::fileExists($restaurant->logo)) {
             Storage::delete($restaurant->logo);
-        } */
-
+        }
         $restaurant->types()->detach();
 
         $restaurant->forceDelete();

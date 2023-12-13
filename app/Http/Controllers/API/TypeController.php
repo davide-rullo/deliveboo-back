@@ -37,4 +37,26 @@ class TypeController extends Controller
             ]);
         }
     }
+
+    /* public function show(Request $request)
+    {
+
+        foreach ($request->selected_types as $type) {
+
+            $type = Type::with('restaurants')->where('slug', $type)->first();
+        }
+
+
+        if ($type) {
+            return response()->json([
+                'success' => true,
+                'result' => $type
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'result' => 'Ops! Page not found'
+            ]);
+        }
+    } */
 }
