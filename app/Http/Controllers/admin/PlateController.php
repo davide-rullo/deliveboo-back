@@ -144,13 +144,13 @@ class PlateController extends Controller
         $restaurantId = $restaurant->id;
         $plate = Plate::onlyTrashed()->where('restaurant_id', $restaurantId)->find($id);
 
-        if (!is_null($plate->cover_image) && Storage::fileExists($plate->cover_image)) {
+        /* if (!is_null($plate->cover_image) && Storage::fileExists($plate->cover_image)) {
             Storage::delete($plate->cover_image);
-        };
+        }; */
 
         $plate->forceDelete();
 
-        return to_route('admin.plates.recycle')->with('message', 'Your plate was deleted permanently');
+        return to_route('admin.recycle.plates')->with('message', 'Your plate was deleted permanently');
     }
 
     public function showTrashed($id)

@@ -103,7 +103,7 @@
 
                         @empty
                         <tr class="">
-                            <td colspan="6">No restaurants trashed!</td>
+                            <td colspan="6">No Dishes trashed!</td>
                         </tr>
                     @endforelse
 
