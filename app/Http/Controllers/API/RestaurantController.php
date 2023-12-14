@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
+use App\Models\Plate;
 
 class RestaurantController extends Controller
 {
@@ -27,14 +28,23 @@ class RestaurantController extends Controller
 
     public function show($slug)
     {
-        $restaurant = Restaurant::with('types', 'plates')->where('slug', $slug)->first();
+        $restaurant = Restaurant::with('types')->where('slug', $slug)->first();
 
+        /* $restaurant_id = Restaurant::where('slug', $slug)->first(); */
+
+        $restaurant_id = $restaurant->id;
+
+        $plates = Plate::where('restaurant_id', $restaurant_id)->where('is_available', 1)->get();
 
 
         if ($restaurant) {
             return response()->json([
                 'success' => true,
-                'result' => $restaurant
+                'result' =>  [
+                    'restaurant' => $restaurant,
+                    'plates' => $plates
+                ]
+
             ]);
         } else {
             return response()->json([
