@@ -11,7 +11,7 @@
                         <div class="card-header">{{ __('Register') }}</div>
 
                         <div class="card-body">
-                            <form method="POST" action="{{ route('register') }}">
+                            <form method="POST" action="{{ route('register') }}" onsubmit="return validateForm()">
                                 @csrf
 
                                 <div class="mb-4 row">
@@ -72,6 +72,9 @@
                                     <div class="col-md-6">
                                         <input id="password-confirm" type="password" class="form-control"
                                             name="password_confirmation" required autocomplete="new-password">
+                                        <span id="passwordError" class="invalid-feedback" style="display: none;">
+                                            <strong>Passwords do not match</strong>
+                                        </span>
                                     </div>
                                 </div>
 
@@ -89,4 +92,20 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function validateForm() {
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("password-confirm").value;
+            var passwordError = document.getElementById("passwordError");
+
+            if (password !== confirmPassword) {
+                passwordError.style.display = "block";
+                return false;
+            } else {
+                passwordError.style.display = "none";
+                return true;
+            }
+        }
+    </script>
 @endsection

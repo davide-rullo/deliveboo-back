@@ -71,13 +71,14 @@
 
                                     <!-- Modal trigger button -->
                                     <a type="button" class="btn btn-outline-danger mx-sm-4" data-bs-toggle="modal"
-                                        data-bs-target="#modalId"><i class="fa-solid fa-trash-can"></i></a>
+                                        data-bs-target="#modal{{ $restaurant->id }}"><i
+                                            class="fa-solid fa-trash-can"></i></a>
 
                                     <!-- Modal Body -->
                                     <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-                                    <div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static"
-                                        data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId"
-                                        aria-hidden="true">
+                                    <div class="modal fade" id="modal{{ $restaurant->id }}" tabindex="-1"
+                                        data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
+                                        aria-labelledby="modalTitleId" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg"
                                             role="document">
                                             <div class="modal-content">
