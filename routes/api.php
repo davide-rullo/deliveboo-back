@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\RestaurantController;
 use App\Http\Controllers\API\TypeController;
+use App\Http\Controllers\Api\Payments\BrainTreeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,7 +28,9 @@ Route::get('/selected', [RestaurantController::class, 'selected']);
 /* Route::get('/types{}') */
 
 Route::get('/types', [TypeController::class, 'index']);
-Route::get('/types/{type:slug}', [TypeController::class, 'show']);
-/* Route::get('/types/selected_types', [TypeController::class, 'show']); */
+Route::post('/types/selected_types', [TypeController::class, 'show']);
 
 Route::get('restaurants/{restaurant:slug}', [RestaurantController::class, 'show']);
+
+Route::get('/orders/generate', [BrainTreeController::class, 'generate']);
+Route::post('/orders/payment', [BrainTreeController::class, 'makePayment']);

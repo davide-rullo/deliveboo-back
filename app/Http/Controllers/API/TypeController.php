@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\FilterTypeRequest;
+use App\Models\Restaurant;
 use App\Models\Type;
 use Illuminate\Http\Request;
 
@@ -20,43 +22,23 @@ class TypeController extends Controller
         ]);
     }
 
-
-
-    public function show($slug)
+    public function show(Request $request)
     {
-        $type = Type::with('restaurants')->where('slug', $slug)->first();
-        if ($type) {
-            return response()->json([
-                'success' => true,
-                'result' => $type
-            ]);
-        } else {
-            return response()->json([
-                'success' => false,
-                'result' => 'Ops! Page not found'
-            ]);
+        $selected_types = $request->input('selected_types');
+        $restaurants = Restaurant::query();
+
+        foreach ($selected_types as $type) {
+            $restaurants->whereHas('types', function ($query) use ($type) {
+                $query->where('name', $type);
+            });
         }
+
+        $restaurants = $restaurants->get();
+
+        return response()->json([
+            'success' => true,
+            'restaurants' => $restaurants,
+            'selected_types' => $selected_types
+        ]);
     }
-
-    /* public function show(Request $request)
-    {
-
-        foreach ($request->selected_types as $type) {
-
-            $type = Type::with('restaurants')->where('slug', $type)->first();
-        }
-
-
-        if ($type) {
-            return response()->json([
-                'success' => true,
-                'result' => $type
-            ]);
-        } else {
-            return response()->json([
-                'success' => false,
-                'result' => 'Ops! Page not found'
-            ]);
-        }
-    } */
 }
