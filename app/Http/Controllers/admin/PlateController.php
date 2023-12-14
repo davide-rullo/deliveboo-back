@@ -103,9 +103,6 @@ class PlateController extends Controller
         $plate->update($validated);
 
         return to_route('admin.plates.index')->with('message', '✅ Dish updated!');
-
-
-
     }
 
     /**
@@ -113,14 +110,16 @@ class PlateController extends Controller
      */
     public function destroy(Plate $plate)
     {
-        if (!is_null($plate->cover_image) && Storage::fileExists($plate->cover_image)) {
+        /* if (!is_null($plate->cover_image) && Storage::fileExists($plate->cover_image)) {
             Storage::delete($plate->cover_image);
-        };
+        }; */
+
+        //dd($plate);
         $plate->delete();
         return to_route('admin.plates.index')->with('message', '✅ Dish deleted successfully');
     }
 
-    /* public function recycle()
+    public function recycle()
     {
         $page_title = 'Plates Recycle Bin';
         $restaurant = Restaurant::where('user_id', Auth::id())->first();
@@ -136,7 +135,7 @@ class PlateController extends Controller
         $plate = Plate::onlyTrashed()->where('restaurant_id', $restaurantId)->find($id);
         $plate->restore();
 
-        return to_route('admin.plates.recycle')->with('message', 'Your plate was restored successfully');
+        return to_route('admin.plates.index')->with('message', 'Your plate was restored successfully');
     }
 
     public function forceDelete($id)
@@ -145,9 +144,9 @@ class PlateController extends Controller
         $restaurantId = $restaurant->id;
         $plate = Plate::onlyTrashed()->where('restaurant_id', $restaurantId)->find($id);
 
-        if (!is_null($plate->cover_image)) {
-            Storage::delete($plate->logo);
-        }
+        if (!is_null($plate->cover_image) && Storage::fileExists($plate->cover_image)) {
+            Storage::delete($plate->cover_image);
+        };
 
         $plate->forceDelete();
 
@@ -161,5 +160,5 @@ class PlateController extends Controller
         $restaurantId = $restaurant->id;
         $plate = Plate::onlyTrashed()->where('restaurant_id', $restaurantId)->find($id);
         return view('admin.plates.showTrashed', compact('plate', 'page_title'));
-    } */
+    }
 }

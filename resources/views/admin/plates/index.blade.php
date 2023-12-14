@@ -10,12 +10,18 @@
             </a>
             <h1 class="pt-5 pb-3 text-center">Your Dishes</h1>
 
-            <div class="d-flex justify-content-end">
+            <div class="d-flex justify-content-end gap-2">
                 <a href="{{ route('admin.plates.create') }}" class="btn btn-outline-dark my-4"><i class="fa-solid fa-plus"></i>
                     Add
                     a
                     new
-                    dish</a>
+                    dish
+                </a>
+                <a class="btn btn-outline-dark my-4" href="{{ route('admin.recycle.plates') }}">
+                    <i class="fa-solid fa-utensils"></i>
+                    Trashed Dishes
+                </a>
+
             </div>
 
             @if (session('message'))
@@ -68,22 +74,22 @@
 
 
                             <td>
-                                <a href="{{ route('admin.plates.show', $plate->id) }}" class="btn btn-outline-dark me-4"><i
-                                        class="fa-solid fa-eye"></i></a>
+                                <a href="{{ route('admin.plates.show', $plate->slug) }}"
+                                    class="btn btn-outline-dark me-4"><i class="fa-solid fa-eye"></i></a>
 
 
-                                <a href="{{ route('admin.plates.edit', $plate->id) }}" class="btn btn-outline-dark"><i
+                                <a href="{{ route('admin.plates.edit', $plate->slug) }}" class="btn btn-outline-dark"><i
                                         class="fa-solid fa-file-pen"></i></a>
 
                                 <!-- Modal trigger button -->
                                 <a type="button" class="btn btn-outline-danger mx-sm-4" data-bs-toggle="modal"
-                                    data-bs-target="#modalId"><i class="fa-solid fa-trash-can"></i></a>
+                                    data-bs-target="#modal{{ $plate->id }}"><i class="fa-solid fa-trash-can"></i></a>
 
                                 <!-- Modal Body -->
                                 <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-                                <div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static"
-                                    data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId"
-                                    aria-hidden="true">
+                                <div class="modal fade" id="modal{{ $plate->id }}" tabindex="-1"
+                                    data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
+                                    aria-labelledby="modalTitleId" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg"
                                         role="document">
                                         <div class="modal-content">
@@ -104,7 +110,7 @@
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Close</button>
 
-                                                <form action="{{ route('admin.plates.destroy', $plate->id) }}"
+                                                <form action="{{ route('admin.plates.destroy', $plate->slug) }}"
                                                     method="POST">
 
                                                     @csrf
