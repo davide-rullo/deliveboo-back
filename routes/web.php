@@ -43,7 +43,7 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name("admin.")->group(
 
     Route::get('/plates/restore/{id}', [PlateController::class, 'restore'])->name('plates.restore');
 
-    Route::delete('/plates/forceDelete/{id}', [RestaurantController::class, 'forceDelete'])->name('plates.forceDelete');
+    Route::delete('/plates/forceDelete/{id}', [PlateController::class, 'forceDelete'])->name('plates.forceDelete');
 
     Route::get('/restaurants/{restaurant}/plates/create', [PlateController::class, 'create'])->name('restaurants.plates.create');
 });
