@@ -34,7 +34,7 @@
                             <td>{{ $trashed->name }}</td>
                             <td>{{ $trashed->address }}</td>
                             <td>{{ $trashed->vat_number }}</td>
-                            <td>{{ $trashed->phone }}</td>
+
                             <td>
                                 @if ($trashed->logo)
                                     {{-- <img width="100" src="{{ asset('storage/' . $trashed->logo) }}"> --}}
@@ -44,6 +44,8 @@
                                     <img width="100" src="{{ asset('storage/covers/american.png') }}">
                                 @endif
                             </td>
+
+                            <td>{{ $trashed->phone }}</td>
 
 
                             <td>
