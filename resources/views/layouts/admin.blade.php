@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -9,7 +9,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title')</title>
-    {{-- <title>{{ config('app.name', 'DeliveBoo-Back') }}</title> --}}
 
     <!-- Fontawesome 6 cdn -->
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css'
@@ -20,22 +19,24 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-    <!-- Usando Vite -->
+    <!-- Vite integration -->
     @vite(['resources/js/app.js'])
 </head>
 
 <body>
     <div id="app">
 
+        <!-- Navbar -->
         <header class="navbar sticky-top flex-md-nowrap p-2 shadow pe-3">
-
             <div class="d-none d-md-block">
+                <!-- Logo and brand -->
                 <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 d-flex gap-2" href="{{ url('/') }}">
                     <img height="40" src="{{ asset('storage/img/logo.png') }}" alt="">
                     <h2 class="my_logo_title">DeliveBoo</h2>
                 </a>
             </div>
 
+            <!-- Navbar toggler for small screens -->
             <div class="d-flex align-items-center">
                 <button class="navbar-toggler position-absolute d-md-none collapsed" type="button"
                     data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
@@ -44,10 +45,7 @@
                 </button>
             </div>
 
-
-
-            {{-- <input class="form-control form-control-dark w-50" type="text" placeholder="Search" aria-label="Search"> --}}
-
+            <!-- User dropdown menu -->
             <ul class="m-0 list-unstyled">
                 <li class="nav-item dropstart">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle text-muted" href="#" role="button"
@@ -55,12 +53,12 @@
                         {{ Auth::user()->name }}
                     </a>
 
+                    <!-- User dropdown content -->
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
                         <a class="dropdown-item" href="{{ url('profile') }}">{{ __('Profile') }}</a>
                         <a class="dropdown-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>
 
@@ -70,25 +68,28 @@
                     </div>
                 </li>
             </ul>
-
-
         </header>
 
-        <div class="container-fluid vh-100">
-            <div class="row h-100">
+        <!-- Main content container with Bootstrap grid system -->
+        <div class="container-fluid">
+            <div class="row">
 
+                <!-- Sidebar navigation -->
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
                     <div class="position-sticky pt-3">
 
+                        <!-- Sidebar content -->
                         <ul class="nav flex-column">
 
-                            <li class="">
-                                <a class="d-md-none nav-link text-muted {{ Route::currentRouteName() == '/' ? 'bg_my_light-pink' : '' }}"
+                            <!-- Home link for small screens -->
+                            <li class="d-md-none">
+                                <a class="nav-link text-muted {{ Route::currentRouteName() == '/' ? 'bg_my_light-pink' : '' }}"
                                     href="{{ url('/') }}">
                                     <i class="fa-solid fa-house fa-lg fa-fw"></i> Home
                                 </a>
                             </li>
 
+                            <!-- Other sidebar links -->
                             <li class="nav-item">
                                 <a class="nav-link text-muted" href="http://localhost:5174/">
                                     <i class="fa-solid fa-chalkboard-user fa-lg fa-fw"></i> To Guest's View
@@ -150,11 +151,10 @@
 
 
                         </ul>
-
-
                     </div>
                 </nav>
 
+                <!-- Main content area -->
                 <main class="col-md-9 ms-sm-auto col-lg-10 p-0 m-0">
                     @yield('content')
                 </main>
