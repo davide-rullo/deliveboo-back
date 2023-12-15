@@ -17,10 +17,10 @@ return new class extends Migration
             $table->string('customer_name');
             $table->string('customer_email');
             $table->string('customer_address');
-            $table->string('stato');
+            $table->string('state');
             $table->date('data');
-            $table->string('tot_price');
-            $table->foreign('restaurant_id')->references('id')->on('restaurants');
+            $table->decimal('tot_price', 5, 2);
+            $table->unsignedBigInteger('restaurant_id')->nullable();
             $table->string('slug');
 
             $table->timestamps();
