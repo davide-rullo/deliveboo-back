@@ -12,7 +12,7 @@
 
 
 
-                @if (!$restaurant)
+                @if ($restaurant == null)
                     <a class="btn btn-outline-dark me-3" href="{{ route('admin.restaurants.create') }}">
                         <i class="fa-solid fa-utensils"></i>
                         Add Your Restaurant
