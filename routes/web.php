@@ -48,6 +48,14 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name("admin.")->group(
     Route::get('/restaurants/{restaurant}/plates/create', [PlateController::class, 'create'])->name('restaurants.plates.create');
 });
 
+// Mail
+
+Route::get('/mailable', function () {
+    $lead = App\Models\Lead::find(1);
+
+    return new App\Mail\NewLeadEmailMd($lead);
+});
+
 
 
 Route::middleware('auth')->group(function () {

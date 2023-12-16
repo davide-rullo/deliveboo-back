@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\CheckoutController;
+use App\Http\Controllers\API\LeadController;
 use App\Http\Controllers\API\RestaurantController;
 use App\Http\Controllers\API\TypeController;
 use App\Http\Controllers\Api\Payments\BrainTreeController;
@@ -26,14 +27,20 @@ Route::get('/restaurants', [RestaurantController::class, 'restaurants']);
 
 Route::get('/selected', [RestaurantController::class, 'selected']);
 
-/* Route::get('/types{}') */
+// Types
 
 Route::get('/types', [TypeController::class, 'index']);
 Route::post('/types/selected_types', [TypeController::class, 'show']);
 
 Route::get('restaurants/{restaurant:slug}', [RestaurantController::class, 'show']);
 
+// Braintree
+
 Route::get('/orders/generate', [BrainTreeController::class, 'generate']);
 Route::post('/orders/payment', [BrainTreeController::class, 'makePayment']);
 
 Route::post('/checkout', [CheckoutController::class, 'processCheckout']);
+
+// Mail
+
+Route::post('/emails', [LeadController::class, 'store']);
