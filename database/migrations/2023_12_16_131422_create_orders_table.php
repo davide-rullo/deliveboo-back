@@ -16,7 +16,9 @@ return new class extends Migration
 
             $table->string('customer_name');
             $table->string('customer_email');
+            $table->string('customer_phone');
             $table->string('customer_address');
+            $table->text('customer_message');
             $table->string('state');
             $table->date('data');
             $table->decimal('tot_price', 5, 2);
