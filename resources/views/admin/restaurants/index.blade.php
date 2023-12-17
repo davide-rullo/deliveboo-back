@@ -53,11 +53,11 @@
                             <!-- Immagine del ristorante -->
                             @if ($restaurant->logo)
                                 <div class="card-img-top">
-                                    <img class="img-fluid" src="{{ asset('storage/' . $restaurant->logo) }}" alt="">
+                                    <img class="img-fluid rounded" src="{{ asset('storage/' . $restaurant->logo) }}" alt="">
                                 </div>
                             @else
                                 <div class="card-img-top">
-                                    <img class="img-fluid" src="{{ asset('storage/img/delivery.jpeg') }}">
+                                    <img class="img-fluid rounded" src="{{ asset('storage/img/delivery.jpeg') }}">
                                 </div>
                             @endif
 
