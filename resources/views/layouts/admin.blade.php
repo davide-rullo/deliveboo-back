@@ -27,7 +27,7 @@
     <div id="app">
 
         <!-- Navbar -->
-        <header class="navbar sticky-top flex-md-nowrap p-2 shadow pe-3">
+        <header class="navbar sticky-top flex-md-nowrap p-3 shadow pe-3">
             <div class="d-none d-md-block">
                 <!-- Logo and brand -->
                 <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 d-flex gap-2" href="{{ url('/') }}">
