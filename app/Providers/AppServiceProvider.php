@@ -20,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //Si inietta all interno di tutta l'applicazione un oggetto Gateway(classe di bootstrap contenente le chiavi per la creazione di un token) attraverso un pattern singleton
+        //Si inietta all interno di tutta l'applicazione un oggetto Gateway(classe di braintree contenente le chiavi per la creazione di un token) attraverso un pattern singleton
 
         $this->app->singleton(Gateway::class, function ($app) {
             return new Gateway(
