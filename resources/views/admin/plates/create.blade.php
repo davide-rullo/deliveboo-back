@@ -116,10 +116,3 @@
 
     </div>
 @endsection
-
-
-@if ($plate->is_available === 1)
-    <td>✅</td>
-@else
-    <td>❌</td>
-@endif

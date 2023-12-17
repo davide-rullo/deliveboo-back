@@ -72,6 +72,12 @@
                                         @else
                                             <span class="badge bg-danger">Not Available</span>
                                         @endif
+
+                                        {{-- @if ($plate->is_available === 1)
+                                            <td>✅</td>
+                                        @else
+                                            <td>❌</td>
+                                        @endif --}}
                                     </td>
                                     <!-- Action Buttons -->
                                     <td>
