@@ -15,10 +15,10 @@ class BrainTreeController extends Controller
     public function generate(Request $request)
     {
         $gateway = new Gateway([
-            'environment' => 'sandbox',
-            'merchantId' => 'mtzf6rx8gksx2k3v',
-            'publicKey' => 'gbkd3mbpwhp65tp9',
-            'privateKey' => '1f572d2f9210c941ba7d9875e960b627'
+            'environment' => env('BRAINTREE_ENVIRONMENT'),
+            'merchantId' => env('BRAINTREE_MERCHANT_ID'),
+            'publicKey' => env('BRAINTREE_PUBLIC_KEY'),
+            'privateKey' => env('BRAINTREE_PRIVATE_KEY')
         ]);
         $token = $gateway->clientToken()->generate();
         $data = [
