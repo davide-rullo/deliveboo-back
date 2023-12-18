@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\CheckoutController;
 use App\Http\Controllers\API\LeadController;
+use App\Http\Controllers\API\OrderController;
 use App\Http\Controllers\API\RestaurantController;
 use App\Http\Controllers\API\TypeController;
 use App\Http\Controllers\Api\Payments\BrainTreeController;
@@ -39,7 +40,6 @@ Route::get('restaurants/{restaurant:slug}', [RestaurantController::class, 'show'
 Route::get('/orders/generate', [BrainTreeController::class, 'generate']);
 Route::post('/orders/payment', [BrainTreeController::class, 'makePayment']);
 
-Route::post('/checkout', [CheckoutController::class, 'processCheckout']);
 
 // Mail
 
