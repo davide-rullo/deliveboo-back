@@ -4,7 +4,8 @@
 
 @section('content')
     <!-- Contenitore principale con sfondo -->
-    <div class="vh-100 container-fluid back_image">
+    <div class="container-fluid back_image">
+        
         <div class="container">
 
             <!-- Pulsante per tornare alla Home -->
@@ -24,14 +25,14 @@
 
                         <!-- Contenuto della card -->
                         <div class="row g-0 p-4">
-                            <!-- Colonna per l'immagine del ristorante -->
+                            <!-- Colonna per l'immagine del ristorante con classe rounded -->
                             <div class="col-lg-5 text-center py-2">
                                 <!-- Verifica se esiste un logo del ristorante -->
                                 @if ($restaurant->logo)
-                                    <img class="img-fluid" src="{{ asset('storage/' . $restaurant->logo) }}" alt="">
+                                    <img class="img-fluid rounded" src="{{ asset('storage/' . $restaurant->logo) }}" alt="">
                                 @else
-                                    <!-- Immagine di default se il logo non esiste -->
-                                    <img class="img-fluid rounded-2" src="{{ asset('storage/img/delivery.jpeg') }}"
+                                    <!-- Immagine di default se il logo non esiste con classe rounded -->
+                                    <img class="img-fluid rounded" src="{{ asset('storage/img/delivery.jpeg') }}"
                                         alt="">
                                 @endif
                             </div>
@@ -49,7 +50,7 @@
                                     <!-- Tipi di ristorante -->
                                     <div class="d-flex">
                                         Type:
-                                        <ul class="d-flex list-untyled gap-1 ps-2">
+                                        <ul class="list-untyled gap-1 ps-2">
                                             <!-- Visualizza i tipi di ristorante -->
                                             @forelse ($restaurant->types as $type)
                                                 <li class="badge my_badge">
