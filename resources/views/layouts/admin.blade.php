@@ -30,7 +30,7 @@
         <header class="navbar sticky-top flex-md-nowrap p-3 shadow pe-3">
             <div class="d-none d-md-block">
                 <!-- Logo and brand -->
-                <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 d-flex gap-2" href="{{ url('/') }}">
+                <a class="navbar-brand col-md-3 col-lg-2 me-0 px-4 d-flex gap-2" href="{{ url('/') }}">
                     <img height="40" src="{{ asset('storage/img/logo.png') }}" alt="">
                     <h2 class="my_logo_title">DeliveBoo</h2>
                 </a>
