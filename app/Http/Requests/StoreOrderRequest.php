@@ -22,15 +22,17 @@ class StoreOrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'customer_name' => ['required', 'bail', 'min:3', 'max:50'],
-            'customer_email' => ['required|email'],
-            'customer_address' => ['required'],
-            'state' => ['nullable'],
-            'data' => ['nullable'],
-            'tot_price' => ['required'],
-            'restaurant_id' => ['required'],
-            'slug' => ['required'],
-
+            'orderDetail.customer_name' => ['required', 'bail', 'min:3', 'max:50'],
+            'orderDetail.customer_email' => ['required'],
+            'orderDetail.customer_address' => ['required'],
+            'orderDetail.customer_phone' => ['required'],
+            'orderDetail.customer_message' => ['nullable'],
+            'orderDetail.state' => ['nullable'],
+            'orderDetail.data' => ['nullable'],
+            'orderDetail.tot_price' => ['required'],
+            'orderDetail.restaurant_id' => ['required'],
+            'orderDetail.slug' => ['nullable'],
+            'orderDetail.items' => ['required', 'array']
         ];
     }
 }

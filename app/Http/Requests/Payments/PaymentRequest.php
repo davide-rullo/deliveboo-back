@@ -24,12 +24,6 @@ class PaymentRequest extends FormRequest
         return [
             'paymentData.nonce' => 'required',
             'paymentData.amount' => 'required',
-            'order.customer_name' => ['required', 'string'],
-            'order.customer_email' => ['required', 'string'],
-            'order.customer_phone' => ['required'],
-            'order.customer_address' => ['required'],
-            'order.tot_price' => ['required'],
-            'order.restaurant_id' => ['required'],
         ];
     }
 }
