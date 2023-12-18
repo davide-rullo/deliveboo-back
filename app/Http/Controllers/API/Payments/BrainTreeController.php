@@ -39,7 +39,7 @@ class BrainTreeController extends Controller
 
         $result = $gateway->transaction()->sale([
             'amount' => $request['paymentData']['amount'],
-            'paymentMethodNonce' => $request['paymentData']['token'],
+            'paymentMethodNonce' => $request['paymentData']['nonce'],
             'options' => [
                 'submitForSettlement' => true,
             ]

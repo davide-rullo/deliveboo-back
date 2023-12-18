@@ -22,7 +22,7 @@ class PaymentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'paymentData.token' => 'required',
+            'paymentData.nonce' => 'required',
             'paymentData.amount' => 'required',
             'order.customer_name' => ['required', 'string'],
             'order.customer_email' => ['required', 'string'],
