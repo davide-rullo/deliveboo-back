@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Api\Payments;
 
+use App\Http\Controllers\API\OrderController;
 use App\Http\Controllers\Controller;
 use Braintree\Gateway;
 use Illuminate\Http\Request;
 use App\Http\Requests\Payments\PaymentRequest;
+use App\Models\Order;
 
 class BrainTreeController extends Controller
 {

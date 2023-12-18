@@ -41,6 +41,9 @@ Route::get('/orders/generate', [BrainTreeController::class, 'generate']);
 Route::post('/orders/payment', [BrainTreeController::class, 'makePayment']);
 
 
+// Order
+Route::post('/orders/new', [OrderController::class, 'createOrder']);
+
 // Mail
 
 Route::post('/emails', [LeadController::class, 'store']);
