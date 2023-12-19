@@ -3,9 +3,9 @@
 @section('title', 'DeliveBoo-Back')
 
 @section('content')
-<div class="vh-100 back_image">
+<div class=" back_image">
 
-    <div class="jumbotron p-5 mb-4 rounded-3">
+    <div class="jumbotron rounded-3">
         <div class="container py-5">
             <div class="logo">
                 <img height="200" src="{{ asset('storage/img/Logo-con-testo.png') }}" alt="">

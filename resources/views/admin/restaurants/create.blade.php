@@ -32,7 +32,7 @@
                         <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
                             id="name" placeholder="Write the name of your restaurant" value="{{ old('name') }}" required>
                         <small id="nameHelper" class="form-text text-white">
-                            Type your name here
+                            
                             @error('name')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -45,7 +45,7 @@
                         <input type="text" class="form-control @error('address') is-invalid @enderror" name="address"
                             id="address" placeholder="Piazza Duomo 1, Milano" value="{{ old('address') }}">
                         <small id="addressHelper" class="form-text text-white">
-                            Type the address here
+                            
                             @error('address')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -88,7 +88,7 @@
                         <input type="text" minlength="11" maxlength="16" class="form-control @error('vat_number') is-invalid @enderror"
                             name="vat_number" id="vat_number" placeholder="0123456789" value="{{ old('vat_number') }}">
                         <small id="vat_numberHelper" class="form-text text-white">
-                            Type the vat number here
+                          
                             @error('vat_number')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -101,7 +101,7 @@
                         <input type="file" class="form-control @error('logo') is-invalid @enderror" name="logo" id="logo"
                             placeholder="" aria-describedby="image_helper">
                         <div id="image_helper" class="form-text text-white">
-                            Upload your business logo
+                         
                         </div>
                         @error('logo')
                             <div class="text-danger">{{ $message }}</div>
@@ -114,7 +114,7 @@
                         <input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone"
                             id="phone" placeholder="0123456789" value="{{ old('phone') }}">
                         <small id="phoneHelper" class="form-text text-white">
-                            Type the phone number here
+                        
                             @error('phone')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
