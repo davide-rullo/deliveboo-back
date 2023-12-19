@@ -33,7 +33,7 @@
                             id="name" aria-describedby="nameHelper" placeholder="Name of new Dish"
                             value="{{ old('name') }}" required>
                         <small id="nameHelper" class="form-text text-muted">
-                            Type dish name here
+                          
 
                             @error('name')
                                 <div class="text-danger">{{ $message }}</div>
@@ -47,7 +47,7 @@
                         <textarea class="form-control" @error('description') is-invalid @enderror name="description" id="description"
                             aria-describedby="descriptionHelper" placeholder="Describe your dish">{{ old('description') }}</textarea>
                         <small id="descriptionHelper" class="form-text text-muted">
-                            Type the description here
+                       
 
                             @error('description')
                                 <div class="text-danger">{{ $message }}</div>
@@ -62,7 +62,7 @@
                             name="ingredients" id="ingredients" aria-describedby="ingredientsHelper"
                             placeholder="Acciughe...." value="{{ old('ingredients') }}">
                         <small id="ingredientsHelper" class="form-text text-muted">
-                            Type the ingredients here
+                      
 
                             @error('ingredients')
                                 <div class="text-danger">{{ $message }}</div>
@@ -76,7 +76,7 @@
                         <input type="file" class="form-control" name="cover_image" id="cover_image" placeholder=""
                             aria-describedby="image_helper">
                         <div id="image_helper" class="form-text text-muted">
-                            Upload your dish image
+                        
                         </div>
                         @error('cover_image')
                             <div class="text-danger">{{ $message }}</div>
@@ -90,7 +90,7 @@
                             @error('price') is-invalid @enderror name="price" id="price"
                             aria-describedby="priceHelper" placeholder="9.99" value="{{ old('price') }}" required>
                         <small id="priceHelper" class="form-text text-muted">
-                            Type the dish price here
+                         
 
                             @error('price')
                                 <div class="text-danger">{{ $message }}</div>
