@@ -89,8 +89,42 @@
                                             class="btn btn-outline-dark me-2"><i class="fa-solid fa-file-pen"></i></a>
                                         <!-- Delete Button -->
                                         <button type="button" class="btn btn-outline-danger me-2" data-bs-toggle="modal"
-                                            data-bs-target="#modal{{ $plate->id }}"><i
-                                                class="fa-solid fa-trash-can"></i></button>
+                                            data-bs-target="#modal{{ $plate->id }}">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </button>
+                                        <!-- Modal di conferma eliminazione -->
+                                        <div class="modal fade" id="modal{{ $plate->id }}" tabindex="-1"
+                                            data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
+                                            aria-labelledby="modalTitleId" aria-hidden="true">
+                                            <!-- Contenuto del modal rimane invariato -->
+                                            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg"
+                                                role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header bg_my_dark-pink">
+                                                        <h5 class="modal-title" id="modalTitleId">Delete Dish</h5>
+
+                                                        <button type="button" class="btn-close bg-white"
+                                                            data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body p-5">
+                                                        <h4>Do you really want to delete this Dish?</h4>
+                                                    </div>
+
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+
+                                                        <form action="{{ route('admin.plates.destroy', $plate) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit"
+                                                                class="btn btn-danger bg_my_dark-pink">Confirm</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
 
