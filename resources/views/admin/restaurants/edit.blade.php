@@ -35,7 +35,7 @@
                             id="name" aria-describedby="nameHelper" placeholder="Write the name of your restaurant"
                             value="{{ old('name', $restaurant->name) }}" required>
                         <small id="nameHelper" class="form-text text-white">
-                            Type your name here
+                           
                             @error('name')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -49,7 +49,7 @@
                             id="address" aria-describedby="addressHelper" placeholder="Piazza Duomo 1, Milano"
                             value="{{ old('address', $restaurant->address) }}">
                         <small id="addressHelper" class="form-text text-white">
-                            Type the address here
+                          
                             @error('address')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -89,7 +89,7 @@
                             aria-describedby="vat_numberHelper" placeholder="0123456789"
                             value="{{ old('vat_number', $restaurant->vat_number) }}">
                         <small id="vat_numberHelper" class="form-text text-white">
-                            Type the vat number here
+                        
                             @error('vat_number')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -102,7 +102,7 @@
                         <input type="file" class="form-control" name="logo" id="logo" placeholder=""
                             aria-describedby="image_helper">
                         <div id="image_helper" class="form-text text-white">
-                            Upload your business logo
+                 
                         </div>
                         @error('logo')
                             <div class="text-danger">{{ $message }}</div>
@@ -116,7 +116,7 @@
                             id="phone" aria-describedby="phoneHelper" placeholder="0123456789"
                             value="{{ old('phone', $restaurant->phone) }}">
                         <small id="phoneHelper" class="form-text text-white">
-                            Type the phone number here
+                 
                             @error('phone')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
