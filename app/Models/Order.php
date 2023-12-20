@@ -15,7 +15,7 @@ class Order extends Model
 
     public function plates(): BelongsToMany
     {
-        return $this->belongsToMany(Plate::class);
+        return $this->belongsToMany(Plate::class, 'order_plate')->withPivot('quantity_plate');
     }
 
     public function restaurant(): BelongsTo
