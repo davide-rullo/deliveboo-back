@@ -50,9 +50,7 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name("admin.")->group(
 
     Route::resource('orders', OrderController::class);
 
-    /* Route::get('/orders', [OrderController::class, 'index'])->name('orders');
-
-    Route::get('/orders/show/{id}', [OrderController::class, 'show'])->name('orders.show'); */
+    Route::get('changeState/{order}/{string}', [OrderController::class, 'changeState'])->name('orders.changeState');
 });
 
 // Mail
