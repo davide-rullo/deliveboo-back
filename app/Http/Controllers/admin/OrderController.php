@@ -31,16 +31,18 @@ class OrderController extends Controller
         return view('admin.orders.show', compact('order'));
     }
 
-    /* public function show(Order $order)
+    public function changeState(Order $order, $value)
     {
+        $editingOrder = Order::find($order->id);
 
-        $restaurant = Restaurant::where('user_id', Auth::id())->first();
-        $restaurantId = $restaurant->id;
+        if (!$editingOrder) {
+            abort(404, 'Ordine non trovato');
+        }
 
-        $orders = Order::with('plates')->where('restaurant_id', $restaurantId)->get();
+        $editingOrder->state = $value;
 
-        $quantity = Order::with('plates')->get();
+        $editingOrder->save();
 
-        return view('admin.orders.show', compact('order', 'orders', 'quantity'));
-    } */
+        return redirect()->route('admin.orders.index');
+    }
 }

@@ -45,7 +45,7 @@
                                 <th scope="col">Address</th> --}}
                                 <th scope="col">State</th>
                                 <th scope="col">Price</th>
-                                <th scope="col">Action</th>
+                                <th scope="col">View</th>
 
                             </tr>
                         </thead>
@@ -65,10 +65,21 @@
                                     <!-- order customer address -->
                                     {{-- <td>{{ $order->customer_address }}</td> --}}
                                     <!-- order customer state -->
-                                    <td>{{ $order->state }}</td>
+                                    <td>
+                                        {{ $order->state }}
+
+                                        <a class="btn btn-danger"
+                                            href="{{ route('admin.orders.changeState', ['order' => $order, 'string' => 'PREPARING']) }}"></a>
+                                        <a class="btn btn-warning"
+                                            href="{{ route('admin.orders.changeState', ['order' => $order, 'string' => 'DELIVERING']) }}"></a>
+                                        <a class="btn btn-success"
+                                            href="{{ route('admin.orders.changeState', ['order' => $order, 'string' => 'DELIVERED']) }}"></a>
+
+
+                                    </td>
 
                                     <!-- order Price -->
-                                    <td>{{ $order->price }} €</td>
+                                    <td>{{ $order->tot_price }} €</td>
                                     {{-- Actions --}}
                                     <td><a href="{{ route('admin.orders.show', $order->id) }}"
                                             class="btn btn-outline-dark me-2"><i class="fa-solid fa-eye"></i></a></td>
