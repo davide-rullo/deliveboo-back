@@ -32,11 +32,12 @@
                             <tr class="text-center align-middle">
                                 <th scope="col">Id</th>
                                 <th scope="col">From</th>
-                                <th scope="col">Mail</th>
+                                {{--  <th scope="col">Mail</th>
                                 <th scope="col">Phone</th>
-                                <th scope="col">Address</th>
+                                <th scope="col">Address</th> --}}
                                 <th scope="col">State</th>
                                 <th scope="col">Price</th>
+                                <th scope="col">Action</th>
 
                             </tr>
                         </thead>
@@ -49,17 +50,20 @@
                                     <td>{{ $order->id }}</td>
                                     <!-- order customer Name -->
                                     <td>{{ $order->customer_name }}</td>
-                                    <!-- order customer Name -->
-                                    <td>{{ $order->customer_email }}</td>
-                                    <!-- order customer Name -->
-                                    <td>{{ $order->customer_phone }}</td>
-                                    <!-- order customer Name -->
-                                    <td>{{ $order->customer_address }}</td>
-                                    <!-- order customer Name -->
+                                    <!-- order customer email -->
+                                    {{-- <td>{{ $order->customer_email }}</td> --}}
+                                    <!-- order customer phone -->
+                                    {{-- <td>{{ $order->customer_phone }}</td> --}}
+                                    <!-- order customer address -->
+                                    {{-- <td>{{ $order->customer_address }}</td> --}}
+                                    <!-- order customer state -->
                                     <td>{{ $order->state }}</td>
 
                                     <!-- order Price -->
                                     <td>{{ $order->price }} €</td>
+                                    {{-- Actions --}}
+                                    <td><a href="{{ route('admin.orders.show', $order->id) }}"
+                                            class="btn btn-outline-dark me-2"><i class="fa-solid fa-eye"></i></a></td>
 
 
                                 </tr>
@@ -67,7 +71,7 @@
                             @empty
                                 <!-- No orderes Message -->
                                 <tr class="">
-                                    <td colspan="7">No orders yet!</td>
+                                    <td colspan="5">No orders yet!</td>
                                 </tr>
                             @endforelse
 
