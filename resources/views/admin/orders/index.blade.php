@@ -14,12 +14,20 @@
                     <i class="fa-solid fa-arrow-left"></i> Back to Home
                 </a>
 
+                <!-- Messaggio di successo dopo un'azione -->
+                @if (session('message'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <strong>Message: </strong> {{ session('message') }}
+                    </div>
+                @endif
+
                 <!-- Page Title -->
                 <h1 class="pt-5 pb-3 text-center">Your Orders</h1>
 
                 <!-- Buttons for Refresh Orders -->
                 <div class="d-flex justify-content-end flex-wrap gap-2">
-                    <a href="{{ route('admin.orders') }}" class="btn btn-outline-dark my-2">
+                    <a href="{{ route('admin.orders.index') }}" class="btn btn-outline-dark my-2">
                         <i class="fa-solid fa-rotate-right"></i>
                     </a>
                 </div>

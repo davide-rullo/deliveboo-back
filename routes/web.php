@@ -48,10 +48,11 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name("admin.")->group(
 
     Route::get('/restaurants/{restaurant}/plates/create', [PlateController::class, 'create'])->name('restaurants.plates.create');
 
-    Route::get('/orders', [OrderController::class, 'index'])->name('orders');
+    Route::resource('orders', OrderController::class);
 
-    Route::get('/orders/show/{id}', [OrderController::class, 'show'])->name('orders.show');
+    /* Route::get('/orders', [OrderController::class, 'index'])->name('orders');
 
+    Route::get('/orders/show/{id}', [OrderController::class, 'show'])->name('orders.show'); */
 });
 
 // Mail
