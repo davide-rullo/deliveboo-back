@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\RestaurantController;
 use App\Http\Controllers\Admin\PlateController;
 use App\Http\Controllers\Api\Payments\BrainTreeController;
@@ -46,6 +47,8 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name("admin.")->group(
     Route::delete('/plates/forceDelete/{id}', [PlateController::class, 'forceDelete'])->name('plates.forceDelete');
 
     Route::get('/restaurants/{restaurant}/plates/create', [PlateController::class, 'create'])->name('restaurants.plates.create');
+
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders');
 });
 
 // Mail
