@@ -22,7 +22,7 @@ class RestaurantController extends Controller
         /* $restaurants = Restaurant::with('type')->orderByDesc('id')->paginate(20); */
         return response()->json([
             'status' => 'success',
-            'restaurants' => Restaurant::with('types')->orderByDesc('id')->paginate(20),
+            'restaurants' => Restaurant::with('types')->orderByDesc('id')->paginate(9),
         ]);
     }
 
